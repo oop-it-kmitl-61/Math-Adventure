@@ -41,7 +41,7 @@ public class Stage_Menu implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource()==bn_back) {
 			fr.dispose();
-			m.init();
+//			m.init();
 		}
 		
 	}

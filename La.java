@@ -290,7 +290,7 @@ public class La implements ActionListener {
 		l.change_monster();
 		seed = System.nanoTime( );
         rand = new Random( seed );
-        index_button = rand.nextInt(30);
+        index_button = rand.nextInt(10)+(a-1)*10;
 		l.b1.setText(num_24[index_button][0]);
 		l.b2.setText(num_24[index_button][1]);
 		l.b3.setText(num_24[index_button][2]);
