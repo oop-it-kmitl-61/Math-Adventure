@@ -47,10 +47,8 @@ public class La implements ActionListener {
 		{"3","3","3","5"},
 		{"2","9","5","6"}
 	};
-	static int hp_player;
-	int dmg_monster;
-	static int hp_monster;
-	int dmg_player=50;
+	static int hp_player=300,hp_monster;
+	int dmg_monster=10,dmg_player=50;
 	ImageIcon icon_player,icon_monster;
 	JLabel lb_player,lb_monster;
 	JFrame fr;
@@ -85,8 +83,6 @@ public class La implements ActionListener {
 		img = new ImageIcon("C:\\Users\\poom\\Desktop\\dumb-knight-12.gif");
 		images.add(img);
 		
-		hp_player = 300;
-		dmg_monster = 10;
 	}
 	public void damage() {
 		try {
