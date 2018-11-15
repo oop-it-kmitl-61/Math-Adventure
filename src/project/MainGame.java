@@ -36,28 +36,35 @@ public class MainGame{
 		gui.index_button = util.rand.nextInt(30);
 		gui.init();
 		gui.change();
-		gui.p_player.add(gui.hp_player());
-		gui.p_monster.add(gui.hp_monster());
-		gui.p_player.add(gui.textfield_hit());
-		gui.p_player.add(gui.button_hit());
-		gui.p_player.add(gui.b1(gui.index_button));
-		gui.p_player.add(gui.b2(gui.index_button));
-		gui.p_player.add(gui.b3(gui.index_button));
-		gui.p_player.add(gui.b4(gui.index_button));
-		gui.p_monster.add(gui.b_plus());
-		gui.p_monster.add(gui.b_minus());
-		gui.p_monster.add(gui.b_multi());
-		gui.p_monster.add(gui.b_divide());
-		gui.p_monster.add(gui.b_eq());
-		gui.p_monster.add(gui.b_clear());
-		gui.p_monster.add(gui.b_change());
+		gui.hp_player();
+		gui.hp_monster();
+		gui.textfield_hit();
+		gui.button_hit();
+		gui.b1(gui.index_button);
+		gui.b2(gui.index_button);
+		gui.b3(gui.index_button);
+		gui.b4(gui.index_button);
+		gui.b_plus();
+		gui.b_minus();
+		gui.b_multi();
+		gui.b_divide();
+		gui.b_eq();
+		gui.b_clear();
+		gui.b_change();
 		gui.p_player.validate();
 		gui.p_monster.validate();
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		while(gui.a<5) {
 		while(util.hp_monster>0) {
 			util.damage();
 			
 		}
+		gui.change_to_cutscene();
 		gui.change_monster();
 		util.seed = System.nanoTime( );
 		util.rand = new Random( util.seed );

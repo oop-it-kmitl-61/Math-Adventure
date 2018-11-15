@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -29,8 +31,8 @@ public class GameGUI implements ActionListener  {
 		p_monster = new JPanel();
 		lb_player = new JLabel();
 		lb_monster = new JLabel();
-		icon_player = new ImageIcon("C:\\Users\\poom\\Desktop\\1.jpg");
-		icon_monster = new ImageIcon("C:\\Users\\poom\\Desktop\\1.jpg");
+		icon_player = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
+		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 		lb_player.setIcon(icon_player);
 		lb_monster.setIcon(icon_monster);
 		p_player.add(lb_player);
@@ -38,20 +40,11 @@ public class GameGUI implements ActionListener  {
 		fr.add(p_player,BorderLayout.NORTH);
 		fr.add(p_monster,BorderLayout.SOUTH);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fr.setSize(1000,1000);
+		fr.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		fr.setVisible(true);
-//		try {
-//			TimeUnit.SECONDS.sleep(3);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		p_player.remove(lb_player);
-//		p_player.revalidate();
-//		p_player.repaint();
-		img = new ImageIcon("C:\\Users\\poom\\Desktop\\2.png");
+		img = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 		images.add(img);
-		img = new ImageIcon("C:\\Users\\poom\\Desktop\\dumb-knight-12.gif");
+		img = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 		images.add(img);
 
 	}
@@ -61,14 +54,14 @@ public class GameGUI implements ActionListener  {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		icon_player = new ImageIcon("C:\\Users\\poom\\Desktop\\dumb-knight-12.gif");
-		icon_monster = new ImageIcon("C:\\Users\\poom\\Desktop\\dumb-knight-12.gif");
+		icon_player = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
+		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 		lb_player.setIcon(null);
 		lb_player.setIcon(images.get(1));
 		lb_monster.setIcon(null);
 		lb_monster.setIcon(icon_monster);
 	}
-	public JPanel hp_player() {
+	public void hp_player() {
 		hpbarp_player = new JPanel();
 		hpbarp_player.setBounds(0,0, 300, 30);
 		
@@ -78,9 +71,9 @@ public class GameGUI implements ActionListener  {
 		hpbar_player.setForeground(Color.GREEN);
 		hpbar_player.setValue(300);
 		hpbarp_player.add(hpbar_player);
-		return hpbarp_player;
+		p_player.add(hpbarp_player);
 	}
-	public JPanel hp_monster() {
+	public void hp_monster() {
 		hpbarp_monster = new JPanel();
 		hpbarp_monster.setBounds(0,0, 300, 30);
 		
@@ -90,87 +83,87 @@ public class GameGUI implements ActionListener  {
 		hpbar_monster.setForeground(Color.GREEN);
 		hpbar_monster.setValue(500);
 		hpbarp_monster.add(hpbar_monster);
-		return hpbarp_monster;
+		p_monster.add(hpbarp_monster);
 	}
-	public JTextField textfield_hit() {
+	public void textfield_hit() {
 		tf = new JTextField();
 		tf.setPreferredSize(new Dimension(300,30));
 		tf.setEditable(false);
-		return tf;
+		p_player.add(tf);
 	}
-	public JButton button_hit() {
+	public void button_hit() {
 		b_hit = new JButton("Hit");
 		b_hit.addActionListener(this);
-		return b_hit;
+		p_player.add(b_hit);
 	}
-	public JButton b1(int a) {
+	public void b1(int a) {
 		b1 = new JButton();
 		b1.setText(GameUTIL.num_24[a][0]);
 		b1.addActionListener(this);
-		return b1;
+		p_player.add(b1);
 	}
-	public JButton b2(int a) {
+	public void b2(int a) {
 		b2 = new JButton();
 		b2.setText(GameUTIL.num_24[a][1]);
 		b2.addActionListener(this);
-		return b2;
+		p_player.add(b2);
 	}
-	public JButton b3(int a) {
+	public void b3(int a) {
 		b3 = new JButton();
 		b3.setText(GameUTIL.num_24[a][2]);
 		b3.addActionListener(this);
-		return b3;
+		p_player.add(b3);
 	}
-	public JButton b4(int a) {
+	public void b4(int a) {
 		b4 = new JButton();
 		b4.setText(GameUTIL.num_24[a][3]);
 		b4.addActionListener(this);
-		return b4;
+		p_player.add(b4);
 	}
-	public JButton b_plus() {
+	public void b_plus() {
 		b_plus = new JButton();
 		b_plus.setText("+");
 		b_plus.addActionListener(this);
-		return b_plus;
+		p_monster.add(b_plus);
 	}
-	public JButton b_minus() {
+	public void b_minus() {
 		b_minus = new JButton();
 		b_minus.setText("-");
 		b_minus.addActionListener(this);
-		return b_minus;
+		p_monster.add(b_minus);
 	}
-	public JButton b_multi() {
+	public void b_multi() {
 		b_multi = new JButton();
 		b_multi.setText("x");
 		b_multi.addActionListener(this);
-		return b_multi;
+		p_monster.add(b_multi);
 	}
-	public JButton b_divide() {
+	public void b_divide() {
 		b_divide = new JButton();
 		b_divide.setText("/");
 		b_divide.addActionListener(this);
-		return b_divide;
+		p_monster.add(b_divide);
 	}
-	public JButton b_eq() {
+	public void b_eq() {
 		b_eq = new JButton();
 		b_eq.setText("=");
 		b_eq.addActionListener(this);
-		return b_eq;
+		p_monster.add(b_eq);
 	}
-	public JButton b_clear() {
+	public void b_clear() {
 		b_clear = new JButton();
 		b_clear.setText("clear");
 		b_clear.addActionListener(this);
-		return b_clear;
+		p_monster.add(b_clear);
 	}
-	public JButton b_change() {
+	public void b_change() {
 		b_change = new JButton();
 		b_change.setText("change");
 		b_change.addActionListener(this);
-		return b_change;
+		p_monster.add(b_change);
 	}
 	public void change_monster() {
-		icon_monster = new ImageIcon("C:\\Users\\poom\\Desktop\\1.jpg");
+		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 		lb_monster.setIcon(null);
 		lb_monster.setIcon(icon_monster);
 		try {
@@ -178,11 +171,39 @@ public class GameGUI implements ActionListener  {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		icon_monster = new ImageIcon("C:\\Users\\poom\\Desktop\\3.gif");
+		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 		lb_monster.setIcon(null);
 		lb_monster.setIcon(icon_monster);
 		hpbar_monster.setValue(500);
 		GameUTIL.hp_monster = 500;
+	}
+	public void change_to_cutscene() {
+		ImageIcon background = null;
+		JPanel jp = new JPanel();
+		JLabel lb = new JLabel();
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		fr.getContentPane().removeAll();
+		fr.repaint();
+//		background = new ImageIcon("src\\project\\asset\\model\\knight\\testbac.jpg");
+//		lb.setIcon(background); set cutscene some how
+		jp.add(lb);
+		fr.add(jp);
+		fr.validate();
+		fr.repaint();
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void change_to_fight() {
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
