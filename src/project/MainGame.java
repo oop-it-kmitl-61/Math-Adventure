@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
-public class Main{
+public class MainGame{
 	// how to remove and add
 //	try {
 //		TimeUnit.SECONDS.sleep(3);
