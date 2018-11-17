@@ -40,16 +40,16 @@ public class Main{
 		gui.hp_monster();
 		gui.textfield_hit();
 		gui.button_hit();
-		gui.b1(gui.index_button);
-		gui.b2(gui.index_button);
-		gui.b3(gui.index_button);
-		gui.b4(gui.index_button);
-		gui.b_plus();
-		gui.b_minus();
-		gui.b_multi();
-		gui.b_divide();
-		gui.b_eq();
-		gui.b_clear();
+//		gui.b1(gui.index_button);
+//		gui.b2(gui.index_button);
+//		gui.b3(gui.index_button);
+//		gui.b4(gui.index_button);
+//		gui.b_plus();
+//		gui.b_minus();
+//		gui.b_multi();
+//		gui.b_divide();
+//		gui.b_eq();
+//		gui.b_clear();
 		gui.b_change();
 		gui.p_player.validate();
 		gui.p_monster.validate();
@@ -64,15 +64,16 @@ public class Main{
 			util.damage();
 			
 		}
+		gui.monster_dead();
 		gui.change_to_cutscene();
-		gui.change_monster();
+		gui.change_to_fight();
 		util.seed = System.nanoTime( );
 		util.rand = new Random( util.seed );
         gui.index_button = util.rand.nextInt(10)+(gui.a-1)*10;
-        gui.b1.setText(util.num_24[gui.index_button][0]);
-        gui.b2.setText(util.num_24[gui.index_button][1]);
-        gui.b3.setText(util.num_24[gui.index_button][2]);
-        gui.b4.setText(util.num_24[gui.index_button][3]);
+//        gui.b1.setText(util.num_24[gui.index_button][0]);
+//        gui.b2.setText(util.num_24[gui.index_button][1]);
+//        gui.b3.setText(util.num_24[gui.index_button][2]);
+//        gui.b4.setText(util.num_24[gui.index_button][3]);
         gui.a++;
 	}
 	}

@@ -55,13 +55,8 @@ public class GameUTIL{
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-			try {
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			hp_player = hp_player-dmg_monster;
-			GameGUI.hpbar_player.setValue(hp_player);
+		hp_player = hp_player-dmg_monster;
+		GameGUI.hpbar_player.setValue(hp_player);
 		
 	}
 	
