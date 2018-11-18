@@ -21,36 +21,62 @@ import javax.swing.*;
 public class GameGUI implements ActionListener  {
 	double num;
 	int a = 1, index_button=0;
-	static ImageIcon icon_player,icon_monster;
-	static JLabel lb_player,lb_monster;
+	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
+	static JLabel lb_player,lb_monster, lb_player_character, lb_monster_character;
 	JFrame fr;
-	static JPanel p_player,p_monster,hpbarp_player,hpbarp_monster,p;
+	static JPanel p_player,p_monster,hpbarp_player,hpbarp_monster,p, p_chp, p_chm;
 	static JProgressBar hpbar_player,hpbar_monster;
 	static JButton b1,b2,b3,b4,b_hit,b_plus,b_minus,b_multi,b_divide,b_eq,b_clear,b_change;
-	static JTextField tf;
+	static JTextField tf, txt;
 	ImageIcon img =null;
 	static List<ImageIcon> images = new ArrayList<ImageIcon>();
 	public void init() {
+		GameGUI gui = new GameGUI();
 		fr = new JFrame();
 		p = new JPanel();
 		p_player = new JPanel();
 		p_monster = new JPanel();
+		p_chp = new JPanel();
+		p_chm = new JPanel();
 		lb_player = new JLabel();
+		lb_player_character = new JLabel();
+		lb_monster_character = new JLabel();
 		lb_monster = new JLabel();
-		icon_player = new ImageIcon("src\\project\\asset\\model\\knight\\1.jpg");
-		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\1.jpg");
+		txt = new JTextField();
+		txt.setPreferredSize( new Dimension( 1000, 300 ) );
+		icon_player = new ImageIcon("asset\\model\\knight\\1.jpg");
+		icon_monster = new ImageIcon("asset\\model\\knight\\1.jpg");
+		
+		icon_player_character = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
+		icon_monster_character = new ImageIcon("asset\\model\\knight\\Random_dragon_gif_by_ribozurai-d30makh.gif");
+		
+		lb_player_character.setIcon(icon_player_character);
+		lb_monster_character.setIcon(icon_monster_character);
+		
 		lb_player.setIcon(icon_player);
 		lb_monster.setIcon(icon_monster);
+		
+		p_chp.add(lb_player_character);
+		p_chm.add(lb_monster_character);
+		
 		p_player.add(lb_player);
-		p_monster.add(lb_monster);
+		p_monster.add(txt);
+		gui.hp_player();
+		gui.textfield_hit();
+		gui.button_hit();
+		gui.b_change();
+		gui.hp_monster();
+		p_player.add(lb_monster);
 		fr.add(p_player,BorderLayout.NORTH);
+		fr.add(p_chp,BorderLayout.WEST);
+		fr.add(p_chm,BorderLayout.EAST);
 		fr.add(p_monster,BorderLayout.SOUTH);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fr.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		fr.setVisible(true);
-		img = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
+		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
 		images.add(img);
-		img = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
+		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
 		images.add(img);
 
 	}
@@ -60,8 +86,8 @@ public class GameGUI implements ActionListener  {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		icon_player = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
-		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
+		icon_player = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
+		icon_monster = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
 		lb_player.setIcon(null);
 		lb_player.setIcon(images.get(1));
 		lb_monster.setIcon(null);
@@ -69,27 +95,15 @@ public class GameGUI implements ActionListener  {
 	}
 	public void hp_player() {
 		hpbarp_player = new JPanel();
-		hpbarp_player.setBounds(0,0, 300, 30);
+		hpbarp_player.setBounds(0,0, 300, 200);
 		
 		hpbar_player = new JProgressBar(0,300);
-		hpbar_player.setPreferredSize(new Dimension(300,30));
+		hpbar_player.setPreferredSize(new Dimension(300,35));
 		hpbar_player.setBackground(Color.RED);
 		hpbar_player.setForeground(Color.GREEN);
 		hpbar_player.setValue(300);
 		hpbarp_player.add(hpbar_player);
 		p_player.add(hpbarp_player);
-	}
-	public void hp_monster() {
-		hpbarp_monster = new JPanel();
-		hpbarp_monster.setBounds(0,0, 300, 30);
-		
-		hpbar_monster = new JProgressBar(0,500);
-		hpbar_monster.setPreferredSize(new Dimension(300,30));
-		hpbar_monster.setBackground(Color.RED);
-		hpbar_monster.setForeground(Color.GREEN);
-		hpbar_monster.setValue(500);
-		hpbarp_monster.add(hpbar_monster);
-		p_monster.add(hpbarp_monster);
 	}
 	public void textfield_hit() {
 		tf = new JTextField();
@@ -101,6 +115,18 @@ public class GameGUI implements ActionListener  {
 		b_hit = new JButton("Hit");
 		b_hit.addActionListener(this);
 		p_player.add(b_hit);
+	}
+	public void hp_monster() {
+		hpbarp_monster = new JPanel();
+		hpbarp_monster.setBounds(0,0, 300, 200);
+		
+		hpbar_monster = new JProgressBar(0,500);
+		hpbar_monster.setPreferredSize(new Dimension(300,35));
+		hpbar_monster.setBackground(Color.RED);
+		hpbar_monster.setForeground(Color.GREEN);
+		hpbar_monster.setValue(500);
+		hpbarp_monster.add(hpbar_monster);
+		p_player.add(hpbarp_monster);
 	}
 //	public void b1(int a) {
 //		b1 = new JButton();
@@ -166,7 +192,7 @@ public class GameGUI implements ActionListener  {
 		b_change = new JButton();
 		b_change.setText("change");
 		b_change.addActionListener(this);
-		p_monster.add(b_change);
+		p_player.add(b_change);
 	}
 	public void change_monster() {
 		hpbar_monster.setValue(500);

@@ -36,10 +36,8 @@ public class MainGame{
 		gui.index_button = util.rand.nextInt(30);
 		gui.init();
 		gui.change();
-		gui.hp_player();
-		gui.hp_monster();
-		gui.textfield_hit();
-		gui.button_hit();
+
+
 //		gui.b1(gui.index_button);
 //		gui.b2(gui.index_button);
 //		gui.b3(gui.index_button);
@@ -50,7 +48,7 @@ public class MainGame{
 //		gui.b_divide();
 //		gui.b_eq();
 //		gui.b_clear();
-		gui.b_change();
+
 		gui.p_player.validate();
 		gui.p_monster.validate();
 		try {
