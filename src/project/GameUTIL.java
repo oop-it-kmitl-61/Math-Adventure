@@ -1,4 +1,4 @@
-package project.src.project;
+package project;
 
 import java.awt.Color;
 import java.awt.Dimension;

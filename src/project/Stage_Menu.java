@@ -1,4 +1,4 @@
-package project.src.project;
+package project;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
