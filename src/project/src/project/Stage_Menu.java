@@ -1,4 +1,4 @@
-package project;
+package project.src.project;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import sun.applet.Main;
 
 public class Stage_Menu implements ActionListener {
 	Main m = new Main();

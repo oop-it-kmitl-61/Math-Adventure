@@ -1,4 +1,4 @@
-package project;
+package project.src.project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,7 +17,11 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -25,9 +29,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class HomePage {
 
-    public static void main(String[] args) {
-        new HomePage();
-    }
+//    public static void main(String[] args) {
+//        new HomePage();
+//    }
 
     public HomePage() {
         EventQueue.invokeLater(new Runnable() {
@@ -37,14 +41,15 @@ public class HomePage {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
-
-                JFrame frame = new JFrame("Testing");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setLayout(new BorderLayout());
-                frame.add(new MenuPane());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                GameGUI gg = new GameGUI();
+                gg.fr = new JFrame("Testing");
+                gg.fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                gg.fr.setLayout(new BorderLayout());
+                gg.fr.add(new MenuPane());
+                gg.fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                gg.fr.pack();
+//                GameGUI.fr.setLocationRelativeTo(null);
+                gg.fr.setVisible(true);
             }
         });
     }
@@ -82,9 +87,10 @@ public class HomePage {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (getLoadGameBounds().contains(e.getPoint())) {
-                        System.out.println("New Game");
+                    	GameUTIL.d=1;
+                    	System.out.println(GameUTIL.d);
                     } else if (getExitGameBounds().contains(e.getPoint())) {
-                        System.out.println("Exit Game");
+                        System.exit(0);
                     }
                 }
             };
@@ -173,5 +179,8 @@ public class HomePage {
             bounds.translate(p.x, p.y);
             return bounds;
         }
+    }
+    public static void start_game() {
+    
     }
 }
