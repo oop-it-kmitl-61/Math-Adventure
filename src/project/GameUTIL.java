@@ -12,7 +12,7 @@ import javax.swing.*;
 public class GameUTIL{
 	static long seed;
 	static Random rand;
-	static int d=0;
+	static int d=0,time_dmg = 0 ;
 	Double sub,num;
 	static String num_24[][] = new String[][] {
 		{"2(5+4)","18"},
@@ -143,13 +143,18 @@ public class GameUTIL{
 	int dmg_monster=10,dmg_player=50;
 	public void damage() {
 		try {
-			TimeUnit.SECONDS.sleep(5);
+			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
+		if(time_dmg!=5) {
+			time_dmg+=1;
+		}
+		else {
 		hp_player = hp_player-dmg_monster;
 		GameGUI.hpbar_player.setValue(hp_player);
-		
+		time_dmg=0;
+		}
 	}
 	
 	public double computeAnother(String equation) {

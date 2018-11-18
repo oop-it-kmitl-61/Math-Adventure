@@ -29,9 +29,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class HomePage {
 
-    public static void main(String[] args) {
-        new HomePage();
-    }
+//    public static void main(String[] args) {
+//        new HomePage();
+//    }
 
     public HomePage() {
         EventQueue.invokeLater(new Runnable() {

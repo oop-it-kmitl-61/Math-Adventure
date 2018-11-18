@@ -97,6 +97,7 @@ public class GameGUI implements ActionListener  {
 		tf.setPreferredSize(new Dimension(300,30));
 		tf.setEditable(true);
 		p_player.add(tf);
+		tf.requestFocusInWindow();
 	}
 	public void button_hit() {
 		b_hit = new JButton("Hit");
@@ -142,7 +143,6 @@ public class GameGUI implements ActionListener  {
 	}
 	public void change_to_fight() {
 		fr.getContentPane().removeAll();
-		fr.pack();
 		fr.repaint();
 		p_player.add(lb_player);
 		p_monster.add(lb_monster);
@@ -232,6 +232,7 @@ public class GameGUI implements ActionListener  {
 				gu.rand = new Random( gu.seed );
 				index_button = gu.rand.nextInt(10)+(a-1)*10;
 				tf.setText("");
+				tf.requestFocusInWindow();
 			}
 		}
 		else if(arg0.getSource()==b_change) {
