@@ -23,7 +23,7 @@ public class GameGUI implements ActionListener  {
 	int a = 1, b=-1, index_button=0;
 	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
 	static JLabel lb_player,lb_monster, lb_player_character, lb_monster_character;
-	JFrame fr;
+	static JFrame fr;
 	static JPanel p_player,p_monster,hpbarp_player,hpbarp_monster,p, p_chp, p_chm;
 
 
@@ -36,7 +36,6 @@ public class GameGUI implements ActionListener  {
 	public void init() {
 
 		GameGUI gui = new GameGUI();
-		fr = new JFrame();
 		p = new JPanel();
 
 		fr.getContentPane().removeAll();
@@ -57,7 +56,7 @@ public class GameGUI implements ActionListener  {
 		icon_player = new ImageIcon("asset\\model\\knight\\1.jpg");
 		icon_monster = new ImageIcon("asset\\model\\knight\\1.jpg");
 		
-		icon_player_character = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
+		icon_player_character = new ImageIcon("asset\\model\\knight\\200.gif");
 		icon_monster_character = new ImageIcon("asset\\model\\knight\\Random_dragon_gif_by_ribozurai-d30makh.gif");
 		
 		lb_player_character.setIcon(icon_player_character);
@@ -83,15 +82,9 @@ public class GameGUI implements ActionListener  {
 		fr.add(p_monster,BorderLayout.SOUTH);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fr.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-
-		fr.setVisible(true);
-		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
-		images.add(img);
-		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
-		images.add(img);
-
 		fr.revalidate();
 		fr.repaint();
+
 //		img = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
 //		images.add(img);
 
