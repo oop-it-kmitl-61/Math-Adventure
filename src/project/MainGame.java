@@ -12,7 +12,6 @@ public class MainGame{
 	public static void main(String[] args) {
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
-//		HomePage.main(args);
 		new HomePage();
 		while(util.d==0) {
 			System.out.println(util.d);

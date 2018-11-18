@@ -98,10 +98,10 @@ public class GameGUI implements ActionListener  {
 		}
 		icon_player = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
 		icon_monster = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
-		lb_player.setIcon(null);
-		lb_player.setIcon(icon_player);
-		lb_monster.setIcon(null);
-		lb_monster.setIcon(icon_monster);
+		lb_player_character.setIcon(null);
+		lb_player_character.setIcon(icon_player);
+		lb_monster_character.setIcon(null);
+		lb_monster_character.setIcon(icon_monster);
 	}
 	public void hp_player() {
 		hpbarp_player = new JPanel();
@@ -311,9 +311,9 @@ public class GameGUI implements ActionListener  {
 	}
 	}
 	public void add_img() {
-		img = new ImageIcon("src\\project\\asset\\model\\knight\\testbac.jpg");
+		img = new ImageIcon("asset\\model\\knight\\testbac.jpg");
 		images.add(img);
-		img = new ImageIcon("src\\project\\asset\\model\\knight\\testbac2.png");
+		img = new ImageIcon("asset\\model\\knight\\testbac2.png");
 		images.add(img);
 	}
 	@Override
