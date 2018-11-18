@@ -1,4 +1,4 @@
-package project;
+package project.src.project;
 
 public class DamageOverTime {
 	int hp,dmg;
