@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -20,7 +21,7 @@ import javax.swing.*;
 
 public class GameGUI implements ActionListener  {
 	double num;
-	int a = 1, b=-1, index_button=0;
+	int a = 0, b=-1, index_button=0;
 	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
 	static JLabel lb_player,lb_monster, lb_player_character, lb_monster_character;
 	static JFrame fr;
@@ -32,7 +33,9 @@ public class GameGUI implements ActionListener  {
 	static JButton b1,b2,b3,b4,b_hit,b_plus,b_minus,b_multi,b_divide,b_eq,b_clear,b_change;
 	static JTextField tf, txt;
 	ImageIcon img =null;
+	Image imgs =null;
 	static List<ImageIcon> images = new ArrayList<ImageIcon>();
+	static List<Image> imagess = new ArrayList<Image>();
 	public void init() {
 
 		GameGUI gui = new GameGUI();
@@ -92,11 +95,52 @@ public class GameGUI implements ActionListener  {
 			e.printStackTrace();
 		}
 		icon_player = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
-		icon_monster = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
-		lb_player_character.setIcon(null);
 		lb_player_character.setIcon(icon_player);
-		lb_monster_character.setIcon(null);
-		lb_monster_character.setIcon(icon_monster);
+		BufferedImage bin = null;
+		BufferedImage bim = (BufferedImage) imagess.get(a);
+		bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D createGraphics = bin.createGraphics();
+		createGraphics.drawImage(bim, null, 0, 0);
+		float alp[] = new float[] {1f,1f,1f,0.2f};
+		float def[] = new float[] {0,0,0,0};
+		RescaleOp r = new RescaleOp(alp,def,null);
+		BufferedImage filter = r.filter(bin, null);
+		lb_monster_character.setIcon(new ImageIcon(filter));
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		alp = new float[] {1f,1f,1f,0.5f};
+		def = new float[] {0,0,0,0};
+		r = new RescaleOp(alp,def,null);
+		filter = r.filter(bin, null);
+		lb_monster_character.setIcon(new ImageIcon(filter));
+	try {
+		TimeUnit.SECONDS.sleep(2);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+	alp = new float[] {1f,1f,1f,0.7f};
+	def = new float[] {0,0,0,0};
+	r = new RescaleOp(alp,def,null);
+	filter = r.filter(bin, null);
+	lb_monster_character.setIcon(new ImageIcon(filter));
+	try {
+		TimeUnit.SECONDS.sleep(2);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+	alp = new float[] {1f,1f,1f,1f};
+	def = new float[] {0,0,0,0};
+	r = new RescaleOp(alp,def,null);
+	filter = r.filter(bin, null);
+	lb_monster_character.setIcon(new ImageIcon(filter));
+	try {
+		TimeUnit.SECONDS.sleep(1);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
 	}
 	public void hp_player() {
 		hpbarp_player = new JPanel();
@@ -143,17 +187,8 @@ public class GameGUI implements ActionListener  {
 	public void change_monster() {
 		hpbar_monster.setValue(500);
 		GameUTIL.hp_monster = 500;
-		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\1.jpg");
-		lb_monster.setIcon(null);
-		lb_monster.setIcon(icon_monster);
-		try {
-			TimeUnit.SECONDS.sleep(5);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		icon_monster = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
-		lb_monster.setIcon(null);
-		lb_monster.setIcon(icon_monster);
+		lb_player_character.setIcon(icon_player_character);
+		change();
 	}
 	public void change_to_cutscene() {
 		b++;
@@ -174,14 +209,9 @@ public class GameGUI implements ActionListener  {
 	public void change_to_fight() {
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		p_player.add(lb_player);
-		p_monster.add(lb_monster);
-		p_player.add(hpbarp_player);
-		p_monster.add(hpbarp_monster);
-		p_player.add(tf);
-		p_player.add(b_hit);
-		p_player.add(b_change);
 		fr.add(p_player,BorderLayout.NORTH);
+		fr.add(p_chp,BorderLayout.WEST);
+		fr.add(p_chm,BorderLayout.EAST);
 		fr.add(p_monster,BorderLayout.SOUTH);
 		change_monster();
 		p_player.validate();
@@ -194,30 +224,25 @@ public class GameGUI implements ActionListener  {
 	}
 	public void monster_dead() {
 		BufferedImage bin = null;
-		try {
-			BufferedImage bim = ImageIO.read(new File("src\\project\\asset\\model\\knight\\dumb-knight-12.gif"));
-			bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
-			Graphics2D createGraphics = bin.createGraphics();
-			createGraphics.drawImage(bim, null, 0, 0);
-			float alp[] = new float[] {1f,1f,1f,0.7f};
-			float def[] = new float[] {0,0,0,0};
-			RescaleOp r = new RescaleOp(alp,def,null);
-			BufferedImage filter = r.filter(bin, null);
-			lb_monster.setIcon(new ImageIcon(filter));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		BufferedImage bim = (BufferedImage) imagess.get(a);
+		bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D createGraphics = bin.createGraphics();
+		createGraphics.drawImage(bim, null, 0, 0);
+		float alp[] = new float[] {1f,1f,1f,0.7f};
+		float def[] = new float[] {0,0,0,0};
+		RescaleOp r = new RescaleOp(alp,def,null);
+		BufferedImage filter = r.filter(bin, null);
+		lb_monster_character.setIcon(new ImageIcon(filter));
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		float alp[] = new float[] {1f,1f,1f,0.5f};
-		float def[] = new float[] {0,0,0,0};
-		RescaleOp r = new RescaleOp(alp,def,null);
-		BufferedImage filter = r.filter(bin, null);
-		lb_monster.setIcon(new ImageIcon(filter));
+		alp = new float[] {1f,1f,1f,0.5f};
+		def = new float[] {0,0,0,0};
+		r = new RescaleOp(alp,def,null);
+		filter = r.filter(bin, null);
+		lb_monster_character.setIcon(new ImageIcon(filter));
 	try {
 		TimeUnit.SECONDS.sleep(2);
 	} catch (InterruptedException e) {
@@ -227,7 +252,7 @@ public class GameGUI implements ActionListener  {
 	def = new float[] {0,0,0,0};
 	r = new RescaleOp(alp,def,null);
 	filter = r.filter(bin, null);
-	lb_monster.setIcon(new ImageIcon(filter));
+	lb_monster_character.setIcon(new ImageIcon(filter));
 	try {
 		TimeUnit.SECONDS.sleep(2);
 	} catch (InterruptedException e) {
@@ -237,7 +262,7 @@ public class GameGUI implements ActionListener  {
 	def = new float[] {0,0,0,0};
 	r = new RescaleOp(alp,def,null);
 	filter = r.filter(bin, null);
-	lb_monster.setIcon(new ImageIcon(filter));
+	lb_monster_character.setIcon(new ImageIcon(filter));
 	try {
 		TimeUnit.SECONDS.sleep(1);
 	} catch (InterruptedException e) {
@@ -249,13 +274,27 @@ public class GameGUI implements ActionListener  {
 		images.add(img);
 		img = new ImageIcon("asset\\model\\knight\\testbac2.png");
 		images.add(img);
+		try {
+			imgs = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		imagess.add(imgs);
+		try {
+			imgs = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		imagess.add(imgs);
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		GameUTIL gu = new GameUTIL();
 		if(arg0.getSource()==b_hit) {
 			num = Double.parseDouble(tf.getText());
-			System.out.println(tf.getText());
 			if(num==24.0) {
 				gu.hp_monster = gu.hp_monster-gu.dmg_player;
 				hpbar_monster.setValue(gu.hp_monster);

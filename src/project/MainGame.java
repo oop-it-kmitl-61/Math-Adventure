@@ -25,19 +25,18 @@ public class MainGame{
 		gui.change();
 		gui.p_player.validate();
 		gui.p_monster.validate();
-		System.out.println("df");
-		while(gui.a<5) {
+		while(gui.a<=5) {
 		while(util.hp_monster>0) {
 			util.damage();
 			
 		}
 		gui.monster_dead();
+		gui.a++;
 		gui.change_to_cutscene();
 		gui.change_to_fight();
 		util.seed = System.nanoTime( );
 		util.rand = new Random( util.seed );
         gui.index_button = util.rand.nextInt(10)+(gui.a-1)*10;
-        gui.a++;
 	}
 	}
 
