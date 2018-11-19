@@ -88,7 +88,6 @@ public class HomePage {
                 public void mouseClicked(MouseEvent e) {
                     if (getLoadGameBounds().contains(e.getPoint())) {
                     	GameUTIL.d=1;
-                    	System.out.println(GameUTIL.d);
                     } else if (getExitGameBounds().contains(e.getPoint())) {
                         System.exit(0);
                     }
@@ -179,8 +178,5 @@ public class HomePage {
             bounds.translate(p.x, p.y);
             return bounds;
         }
-    }
-    public static void start_game() {
-    
     }
 }

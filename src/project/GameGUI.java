@@ -53,8 +53,8 @@ public class GameGUI implements ActionListener  {
 		lb_monster = new JLabel();
 		txt = new JTextField();
 		txt.setPreferredSize( new Dimension( 1000, 300 ) );
-		icon_player = new ImageIcon("asset\\model\\knight\\1.jpg");
-		icon_monster = new ImageIcon("asset\\model\\knight\\1.jpg");
+		icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
+		icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
 		
 		icon_player_character = new ImageIcon("asset\\model\\knight\\200.gif");
 		icon_monster_character = new ImageIcon("asset\\model\\knight\\Random_dragon_gif_by_ribozurai-d30makh.gif");
@@ -70,11 +70,11 @@ public class GameGUI implements ActionListener  {
 		
 		p_player.add(lb_player);
 		p_monster.add(txt);
-		gui.hp_player();
-		gui.textfield_hit();
-		gui.button_hit();
-		gui.b_change();
-		gui.hp_monster();
+		hp_player();
+		textfield_hit();
+		button_hit();
+		b_change();
+		hp_monster();
 		p_player.add(lb_monster);
 		fr.add(p_player,BorderLayout.NORTH);
 		fr.add(p_chp,BorderLayout.WEST);
@@ -84,11 +84,6 @@ public class GameGUI implements ActionListener  {
 		fr.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		fr.revalidate();
 		fr.repaint();
-
-//		img = new ImageIcon("src\\project\\asset\\model\\knight\\dumb-knight-12.gif");
-//		images.add(img);
-
-
 	}
 	public void change() {
 		try {
@@ -139,67 +134,6 @@ public class GameGUI implements ActionListener  {
 		hpbarp_monster.add(hpbar_monster);
 		p_player.add(hpbarp_monster);
 	}
-//	public void b1(int a) {
-//		b1 = new JButton();
-//		b1.setText(GameUTIL.num_24[a][0]);
-//		b1.addActionListener(this);
-//		p_player.add(b1);
-//	}
-//	public void b2(int a) {
-//		b2 = new JButton();
-//		b2.setText(GameUTIL.num_24[a][1]);
-//		b2.addActionListener(this);
-//		p_player.add(b2);
-//	}
-//	public void b3(int a) {
-//		b3 = new JButton();
-//		b3.setText(GameUTIL.num_24[a][2]);
-//		b3.addActionListener(this);
-//		p_player.add(b3);
-//	}
-//	public void b4(int a) {
-//		b4 = new JButton();
-//		b4.setText(GameUTIL.num_24[a][3]);
-//		b4.addActionListener(this);
-//		p_player.add(b4);
-//	}
-//	public void b_plus() {
-//		b_plus = new JButton();
-//		b_plus.setText("+");
-//		b_plus.addActionListener(this);
-//		p_monster.add(b_plus);
-//	}
-//	public void b_minus() {
-//		b_minus = new JButton();
-//		b_minus.setText("-");
-//		b_minus.addActionListener(this);
-//		p_monster.add(b_minus);
-//	}
-//	public void b_multi() {
-//		b_multi = new JButton();
-//		b_multi.setText("x");
-//		b_multi.addActionListener(this);
-//		p_monster.add(b_multi);
-//	}
-//	public void b_divide() {
-//		b_divide = new JButton();
-//		b_divide.setText("/");
-//		b_divide.addActionListener(this);
-//		p_monster.add(b_divide);
-//	}
-//	public void b_eq() {
-//		b_eq = new JButton();
-//		b_eq.setText("=");
-//		b_eq.addActionListener(this);
-//		p_monster.add(b_eq);
-//	}
-//	public void b_clear() {
-//		b_clear = new JButton();
-//		b_clear.setText("clear");
-//		b_clear.addActionListener(this);
-//		p_monster.add(b_clear);
-//	}
-
 	public void b_change() {
 		b_change = new JButton();
 		b_change.setText("change");
@@ -320,7 +254,8 @@ public class GameGUI implements ActionListener  {
 	public void actionPerformed(ActionEvent arg0) {
 		GameUTIL gu = new GameUTIL();
 		if(arg0.getSource()==b_hit) {
-			num = gu.computeAnother(tf.getText());
+			num = Double.parseDouble(tf.getText());
+			System.out.println(tf.getText());
 			if(num==24.0) {
 				gu.hp_monster = gu.hp_monster-gu.dmg_player;
 				hpbar_monster.setValue(gu.hp_monster);
