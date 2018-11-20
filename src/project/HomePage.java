@@ -37,10 +37,10 @@ public class HomePage {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                }
+//                try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+//                }
                 GameGUI gg = new GameGUI();
                 gg.fr = new JFrame("Testing");
                 gg.fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

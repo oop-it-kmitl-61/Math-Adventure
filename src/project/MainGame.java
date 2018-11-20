@@ -18,11 +18,10 @@ public class MainGame{
 		}
 		util.seed = System.nanoTime( );
 		util.rand = new Random( util.seed );
-		gui.index_button = util.rand.nextInt(30);
+		gui.index_button = util.rand.nextInt(23)+(gui.a*22);
 		gui.add_img();
 		gui.change_to_cutscene();
 		gui.init();
-		gui.change();
 		gui.p_player.validate();
 		gui.p_monster.validate();
 		while(gui.a<=5) {
@@ -32,11 +31,12 @@ public class MainGame{
 		}
 		gui.monster_dead();
 		gui.a++;
-		gui.change_to_cutscene();
-		gui.change_to_fight();
 		util.seed = System.nanoTime( );
 		util.rand = new Random( util.seed );
-        gui.index_button = util.rand.nextInt(10)+(gui.a-1)*10;
+        gui.index_button = util.rand.nextInt(23)+(gui.a*22);
+        gui.txt.setText(util.num_24[gui.index_button][0]);
+		gui.change_to_cutscene();
+		gui.change_to_fight();
 	}
 	}
 
