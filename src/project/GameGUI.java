@@ -38,6 +38,12 @@ public class GameGUI implements ActionListener  {
 	static List<ImageIcon> images = new ArrayList<ImageIcon>();
 	static List<Image> images_background = new ArrayList<Image>();
 	static List<Image> images_boss = new ArrayList<Image>();
+	static List<Image> images_crystal_boss = new ArrayList<Image>();
+	
+	BufferedImage bim,bim2,bin,bin2,filter,filter2;
+	Graphics2D createGraphics,createGraphics2;
+	RescaleOp r;
+	
 	public void init() {
 
 		GameGUI gui = new GameGUI();
@@ -57,7 +63,6 @@ public class GameGUI implements ActionListener  {
 		lb_monster_character = new JLabel();
 		lb_monster = new JLabel();
 		txt = new JLabel(GameUTIL.num_24[index_button][0]);
-//		txt.setText(GameUTIL.num_24[index_button][0]);
 		txt.setFont(new Font(txt.getFont().getName(), txt.getFont().getStyle(), 108));
 		txt.setHorizontalAlignment(JLabel.CENTER);
 		txt.setBorder(new LineBorder(Color.BLACK));
@@ -65,7 +70,7 @@ public class GameGUI implements ActionListener  {
 		icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
 		icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
 		
-//		icon_player_character = new ImageIcon("asset\\model\\knight\\200.gif");
+		icon_player_character = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
 //		icon_monster_character = new ImageIcon("asset\\model\\knight\\Random_dragon_gif_by_ribozurai-d30makh.gif");
 		
 //		lb_player_character.setIcon(icon_player_character);
@@ -95,46 +100,54 @@ public class GameGUI implements ActionListener  {
 		fr.revalidate();
 		fr.repaint();
 		
-		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
-		{
-		BufferedImage bim = (BufferedImage) img_player;
-		BufferedImage bim2 = (BufferedImage) images_boss.get(a);
-		BufferedImage bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
-		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
-		Graphics2D createGraphics = bin.createGraphics();
-		Graphics2D createGraphics2= bin2.createGraphics();
-		createGraphics.drawImage(bim, null, 0, 0);
-		createGraphics2.drawImage(bim2, null, 0, 0);
-		float alp[] = new float[] {1f,1f,1f,alp_img};
-		float def[] = new float[] {0,0,0,0};
-		RescaleOp r = new RescaleOp(alp,def,null);
-		BufferedImage filter = r.filter(bin, null);
-		BufferedImage filter2 = r.filter(bin2, null);
-		lb_player_character.setIcon(new ImageIcon(filter));
-		lb_monster_character.setIcon(new ImageIcon(filter2));
-		try {
-			TimeUnit.MILLISECONDS.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		}
+//		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
+//		{
+//		BufferedImage bim = (BufferedImage) img_player;
+//		BufferedImage bim2 = (BufferedImage) images_boss.get(a);
+//		BufferedImage bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
+//		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
+//		Graphics2D createGraphics = bin.createGraphics();
+//		Graphics2D createGraphics2= bin2.createGraphics();
+//		createGraphics.drawImage(bim, null, 0, 0);
+//		createGraphics2.drawImage(bim2, null, 0, 0);
+//		float alp[] = new float[] {1f,1f,1f,alp_img};
+//		float def[] = new float[] {0,0,0,0};
+//		RescaleOp r = new RescaleOp(alp,def,null);
+//		BufferedImage filter = r.filter(bin, null);
+//		BufferedImage filter2 = r.filter(bin2, null);
+//		lb_player_character.setIcon(new ImageIcon(filter));
+//		lb_monster_character.setIcon(new ImageIcon(filter2));
+//		try {
+//			TimeUnit.MILLISECONDS.sleep(200);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		}
+		change();
 	}
 	public void change() {
 		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
 		{
-		BufferedImage bim = (BufferedImage) img_player;
-		BufferedImage bim2 = (BufferedImage) images_boss.get(a);
-		BufferedImage bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
-		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
-		Graphics2D createGraphics = bin.createGraphics();
-		Graphics2D createGraphics2= bin2.createGraphics();
+		System.out.println(bim);
+		try {
+			bim = (BufferedImage) ImageIO.read(new File("asset\\model\\knight\\dumb-knight-12.gif"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		};
+		System.out.println(bim);
+		bim2 = (BufferedImage) images_boss.get(a);
+		bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		createGraphics = bin.createGraphics();
+		createGraphics2= bin2.createGraphics();
 		createGraphics.drawImage(bim, null, 0, 0);
 		createGraphics2.drawImage(bim2, null, 0, 0);
 		float alp[] = new float[] {1f,1f,1f,alp_img};
 		float def[] = new float[] {0,0,0,0};
-		RescaleOp r = new RescaleOp(alp,def,null);
-		BufferedImage filter = r.filter(bin, null);
-		BufferedImage filter2 = r.filter(bin2, null);
+		r = new RescaleOp(alp,def,null);
+		filter = r.filter(bin, null);
+		filter2 = r.filter(bin2, null);
 		lb_player_character.setIcon(new ImageIcon(filter));
 		lb_monster_character.setIcon(new ImageIcon(filter2));
 		try {
@@ -143,6 +156,7 @@ public class GameGUI implements ActionListener  {
 			e.printStackTrace();
 		}
 		}
+		lb_player_character.setIcon(icon_player_character);
 	}
 	public void hp_player() {
 		hpbarp_player = new JPanel();
@@ -203,7 +217,6 @@ public class GameGUI implements ActionListener  {
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -226,20 +239,14 @@ public class GameGUI implements ActionListener  {
 	public void monster_dead() {
 		for(float alp_img=1;alp_img>=0;alp_img-=0.1) 
 		{
-//		BufferedImage bim = (BufferedImage) img_player;
 		BufferedImage bim2 = (BufferedImage) images_boss.get(a);
-//		BufferedImage bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
-//		Graphics2D createGraphics = bin.createGraphics();
 		Graphics2D createGraphics2= bin2.createGraphics();
-//		createGraphics.drawImage(bim, null, 0, 0);
 		createGraphics2.drawImage(bim2, null, 0, 0);
 		float alp[] = new float[] {1f,1f,1f,alp_img};
 		float def[] = new float[] {0,0,0,0};
 		RescaleOp r = new RescaleOp(alp,def,null);
-//		BufferedImage filter = r.filter(bin, null);
 		BufferedImage filter2 = r.filter(bin2, null);
-//		lb_player_character.setIcon(new ImageIcon(filter));
 		lb_monster_character.setIcon(new ImageIcon(filter2));
 		try {
 			TimeUnit.MILLISECONDS.sleep(200);
@@ -247,88 +254,51 @@ public class GameGUI implements ActionListener  {
 			e.printStackTrace();
 		}
 		}
-//		BufferedImage bin = null;
-//		BufferedImage bim = (BufferedImage) images_boss.get(a);
-//		bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
-//		Graphics2D createGraphics = bin.createGraphics();
-//		createGraphics.drawImage(bim, null, 0, 0);
-//		float alp[] = new float[] {1f,1f,1f,0.7f};
-//		float def[] = new float[] {0,0,0,0};
-//		RescaleOp r = new RescaleOp(alp,def,null);
-//		BufferedImage filter = r.filter(bin, null);
-//		lb_monster_character.setIcon(new ImageIcon(filter));
-//		try {
-//			TimeUnit.SECONDS.sleep(2);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		alp = new float[] {1f,1f,1f,0.5f};
-//		def = new float[] {0,0,0,0};
-//		r = new RescaleOp(alp,def,null);
-//		filter = r.filter(bin, null);
-//		lb_monster_character.setIcon(new ImageIcon(filter));
-//	try {
-//		TimeUnit.SECONDS.sleep(2);
-//	} catch (InterruptedException e) {
-//		e.printStackTrace();
-//	}
-//	alp = new float[] {1f,1f,1f,0.2f};
-//	def = new float[] {0,0,0,0};
-//	r = new RescaleOp(alp,def,null);
-//	filter = r.filter(bin, null);
-//	lb_monster_character.setIcon(new ImageIcon(filter));
-//	try {
-//		TimeUnit.SECONDS.sleep(2);
-//	} catch (InterruptedException e) {
-//		e.printStackTrace();
-//	}
-//	alp = new float[] {1f,1f,1f,0};
-//	def = new float[] {0,0,0,0};
-//	r = new RescaleOp(alp,def,null);
-//	filter = r.filter(bin, null);
-//	lb_monster_character.setIcon(new ImageIcon(filter));
-//	try {
-//		TimeUnit.SECONDS.sleep(1);
-//	} catch (InterruptedException e) {
-//		e.printStackTrace();
-//	}
+		for(float alp_img=0;alp_img<=1;alp_img+=0.5) 
+		{
+		BufferedImage bim2 = (BufferedImage) images_crystal_boss.get(a);
+		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D createGraphics2= bin2.createGraphics();
+		createGraphics2.drawImage(bim2, null, 0, 0);
+		float alp[] = new float[] {1f,1f,1f,alp_img};
+		float def[] = new float[] {0,0,0,0};
+		RescaleOp r = new RescaleOp(alp,def,null);
+		BufferedImage filter2 = r.filter(bin2, null);
+		lb_monster_character.setIcon(new ImageIcon(filter2));
+		try {
+			TimeUnit.MILLISECONDS.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		}
 	}
 	public void add_img() {
 		img = new ImageIcon("asset\\model\\knight\\testbac.jpg");
 		images.add(img);
 		img = new ImageIcon("asset\\model\\knight\\testbac2.png");
 		images.add(img);
-//		try {
-//			img_background = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		images_background.add(img_background);
-//		try {
-//			img_background = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		images_background.add(img_background);
+		try {
+			img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_11.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		images_crystal_boss.add(img_boss);
+		
 		try {
 			img_player = ImageIO.read(new File("asset\\model\\knight\\dumb-knight-12.gif"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		try {
 			img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		images_boss.add(img_boss);
 		try {
 			img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		images_boss.add(img_boss);

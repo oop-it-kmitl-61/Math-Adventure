@@ -154,7 +154,7 @@ public class GameUTIL{
 		{"(36x258)+(36x25)","10188"},
 		{"(39x9)+(39x9)","702"},//22
 	};
-	static int hp_player=300,hp_monster=500;
+	static int hp_player=20,hp_monster=500;
 	int dmg_monster=10,dmg_player=50;
 	public void damage() {
 		try {
