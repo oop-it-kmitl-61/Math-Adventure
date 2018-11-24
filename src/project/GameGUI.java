@@ -35,8 +35,9 @@ public class GameGUI implements ActionListener  {
 	static JTextField tf;
 	ImageIcon img =null;
 	Image img_background,img_player,img_boss;
-	static List<ImageIcon> images = new ArrayList<ImageIcon>();
-	static List<Image> images_background = new ArrayList<Image>();
+	static List<ImageIcon> images_background = new ArrayList<ImageIcon>();
+	static List<ImageIcon> images_icon_boss = new ArrayList<ImageIcon>();
+//	static List<Image> images_background = new ArrayList<Image>();
 	static List<Image> images_boss = new ArrayList<Image>();
 	static List<Image> images_crystal_boss = new ArrayList<Image>();
 	
@@ -157,6 +158,7 @@ public class GameGUI implements ActionListener  {
 		}
 		}
 		lb_player_character.setIcon(icon_player_character);
+		lb_monster_character.setIcon(images_icon_boss.get(a));
 	}
 	public void hp_player() {
 		hpbarp_player = new JPanel();
@@ -210,7 +212,7 @@ public class GameGUI implements ActionListener  {
 		JLabel lb = new JLabel();
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		lb.setIcon(images.get(b));
+		lb.setIcon(images_background.get(b));
 		fr.add(lb);
 		fr.validate();
 		fr.repaint();
@@ -272,36 +274,23 @@ public class GameGUI implements ActionListener  {
 		}
 		}
 	}
-	public void add_img() {
+	public void add_img() throws IOException {
 		img = new ImageIcon("asset\\model\\knight\\testbac.jpg");
-		images.add(img);
+		images_background.add(img);
 		img = new ImageIcon("asset\\model\\knight\\testbac2.png");
-		images.add(img);
-		try {
-			img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_11.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		images_background.add(img);
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_11.png"));
 		images_crystal_boss.add(img_boss);
 		
-		try {
-			img_player = ImageIO.read(new File("asset\\model\\knight\\dumb-knight-12.gif"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		img_player = ImageIO.read(new File("asset\\model\\knight\\dumb-knight-12.gif"));
 		
-		try {
-			img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
 		images_boss.add(img_boss);
-		try {
-			img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
 		images_boss.add(img_boss);
+		
+		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
+		images_icon_boss.add(img);
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

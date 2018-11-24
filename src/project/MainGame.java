@@ -23,7 +23,12 @@ public class MainGame{
 		util.seed = System.nanoTime( );
 		util.rand = new Random( util.seed );
 		gui.index_button = util.rand.nextInt(23)+(gui.a*22);
-		gui.add_img();
+		try {
+			gui.add_img();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		gui.change_to_cutscene();
 		gui.init();
 		gui.p_player.validate();
