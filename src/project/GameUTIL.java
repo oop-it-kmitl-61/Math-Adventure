@@ -15,6 +15,7 @@ public class GameUTIL{
 	static int d=0,time_dmg = 0 ;
 	Double sub,num;
 	static String num_24[][] = new String[][] {
+//		"≈Õß¥÷ß®“°‰ø≈Ï"
 		{"2(5+4)","18"},
 		{"2(8+3)","22"},
 		{"2(7+6)","26"},
@@ -154,7 +155,7 @@ public class GameUTIL{
 		{"(36x258)+(36x25)","10188"},
 		{"(39x9)+(39x9)","702"},//22
 	};
-	static int hp_player=20,hp_monster=500;
+	static int hp_player=300,hp_monster=500;
 	int dmg_monster=10,dmg_player=50;
 	public void damage() {
 		try {
