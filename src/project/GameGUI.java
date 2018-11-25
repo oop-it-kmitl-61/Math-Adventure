@@ -138,7 +138,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
 		{
 		try {
-			bim = (BufferedImage) ImageIO.read(new File("asset\\model\\knight\\YSERA_DRAGON.gif"));
+			bim = (BufferedImage) ImageIO.read(new File("asset\\model\\knight\\4cdeced68775d38259726f92199c3a6c.gif"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -242,11 +242,11 @@ public class GameGUI implements ActionListener,KeyListener  {
 	}
 	public void change_to_fight(String back) {
 		fr.getContentPane().removeAll();
-        fr.revalidate();
-        fr.pack();
-        fr.repaint();
-        fr.setLayout(new BorderLayout());
-        JLabel background=new JLabel(new ImageIcon(back));
+		fr.revalidate();
+		fr.pack();
+		fr.repaint();
+		fr.setLayout(new BorderLayout());
+		JLabel background=new JLabel(new ImageIcon(back));
         background.setLayout(new BorderLayout());
         p_player = new TransparentPanel();
         p_monster = new JPanel();
@@ -255,7 +255,8 @@ public class GameGUI implements ActionListener,KeyListener  {
         p_chm = new JPanel();
         p_cham = new TransparentPanel();
         p_cham.setLayout(new BorderLayout());
-        JLabel keeptxt = new JLabel(new ImageIcon("images\\old_paper.jpg"));
+        p_cham.setBackground(new Color(0,0,0,0));
+        JLabel keeptxt = new JLabel(new ImageIcon("C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\old_paper.jpg"));
         lb_player = new JLabel();
         lb_player_character = new JLabel();
         lb_monster_character = new JLabel();
@@ -269,7 +270,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
         icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
         
-        icon_player_character = new ImageIcon("asset\\model\\knight\\YSERA_DRAGON.gif");
+        icon_player_character = new ImageIcon("asset\\model\\knight\\4cdeced68775d38259726f92199c3a6c.gif");
         icon_monster_character = new ImageIcon("asset\\model\\knight\\Random_dragon_gif_by_ribozurai-d30makh.gif");
         
 //      lb_player_character.setIcon(icon_player_character);
@@ -287,8 +288,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         b_change();
         hp_monster();
         p_player.add(lb_monster);
-
-        
+         
         background.add(p_player,BorderLayout.NORTH);
         background.add(keeptxt,BorderLayout.CENTER);
         background.add(p_cham,BorderLayout.SOUTH);
@@ -346,18 +346,18 @@ public class GameGUI implements ActionListener,KeyListener  {
 		img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_11.png"));
 		images_crystal_boss.add(img_boss);
 		
-		img_player = ImageIO.read(new File("asset\\model\\knight\\dumb-knight-12.gif"));
+		img_player = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
 		
 		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
 
-		img_player = ImageIO.read(new File("asset\\model\\knight\\1520714775_tumblr_nzglpyfmE81tn3u0ao1_500.gif"));
+		img_player = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
 
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\1520714775_tumblr_nzglpyfmE81tn3u0ao1_500.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
 		images_boss.add(img_boss);
 		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
 		images_boss.add(img_boss);
 		
-		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
+		img = new ImageIcon("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif");
 		images_icon_boss.add(img);
 	}
 //	public void keyPressed(KeyEvent e) {
