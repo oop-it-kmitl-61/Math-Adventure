@@ -14,19 +14,19 @@ import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+//import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class MainGame{
 	private static int locks = 0, state = 0;
 	public static void main(String[] args) {
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
-		String[] backgroundlist = {"C:\\\\Users\\\\Cystle0\\\\eclipse-workspace\\\\projectjava\\\\Adventure-Game-OOP-Project\\\\images\\\\bg_1_169.jpg", 
-				"C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\bg_2_169.jpg", 
-				"C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\bg_3_169.jpg", 
-				"C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\bg_4_169.jpg",
-				"C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\bg_5_169.jpg", 
-				"C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\Bg_castle_1.png"};
+		String[] backgroundlist = {"images\\bg_1_169.jpg", 
+				"images\\bg_2_169.jpg", 
+				"images\\bg_3_169.jpg", 
+				"images\\bg_4_169.jpg",
+				"images\\bg_5_169.jpg", 
+				"images\\Bg_castle_1.png"};
 		new HomePage();
 		while(util.d==0) {
 			System.out.println(util.d);

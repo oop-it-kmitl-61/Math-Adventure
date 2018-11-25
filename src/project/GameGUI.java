@@ -4,10 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
 import java.io.File;
@@ -21,11 +24,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import com.sun.javafx.geom.Rectangle;
-import com.sun.javafx.tk.Toolkit;
-import com.sun.prism.Graphics;
+//import com.sun.javafx.geom.Rectangle;
+//import com.sun.javafx.tk.Toolkit;
+//import com.sun.prism.Graphics;
 
-public class GameGUI implements ActionListener  {
+public class GameGUI implements ActionListener,KeyListener  {
 	double num;
 //	float alp_img;
 	int a = 0, b=-1, index_button=0;
@@ -179,6 +182,7 @@ public class GameGUI implements ActionListener  {
 		tf = new JTextField();
 		tf.setPreferredSize(new Dimension(300,30));
 		tf.setEditable(true);
+		tf.addKeyListener(this);
 		p_player.add(tf);
 		tf.requestFocusInWindow();
 	}
@@ -251,7 +255,7 @@ public class GameGUI implements ActionListener  {
         p_chm = new JPanel();
         p_cham = new TransparentPanel();
         p_cham.setLayout(new BorderLayout());
-        JLabel keeptxt = new JLabel(new ImageIcon("C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\old_paper.jpg"));
+        JLabel keeptxt = new JLabel(new ImageIcon("images\\old_paper.jpg"));
         lb_player = new JLabel();
         lb_player_character = new JLabel();
         lb_monster_character = new JLabel();
@@ -356,6 +360,30 @@ public class GameGUI implements ActionListener  {
 		img = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
 		images_icon_boss.add(img);
 	}
+//	public void keyPressed(KeyEvent e) {
+//	    if (e.getKeyCode()==KeyEvent.VK_ENTER){
+//	    	GameUTIL gu = new GameUTIL();
+//	    	num = Double.parseDouble(tf.getText());
+//			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
+//				gu.hp_monster = gu.hp_monster-gu.dmg_player;
+//				hpbar_monster.setValue(gu.hp_monster);
+//				gu.seed = System.nanoTime( );
+//				gu.rand = new Random( gu.seed );
+//				index_button = gu.rand.nextInt(23)+(a*22);
+//				tf.setText("");
+//				tf.requestFocusInWindow();
+//				if(gu.hp_monster > 0) {
+//					txt.setText(GameUTIL.num_24[index_button][0]);
+//				} else {
+//					txt.setText("");
+//				}
+//			}
+//			else {
+//				gu.hp_player -= 10;
+//			}
+//	    }
+//
+//	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		GameUTIL gu = new GameUTIL();
@@ -375,6 +403,9 @@ public class GameGUI implements ActionListener  {
 					txt.setText("");
 				}
 			}
+			else {
+				gu.hp_player -= 10;
+			}
 		}
 		else if(arg0.getSource()==b_change) {
 			gu.seed = System.nanoTime( );
@@ -387,5 +418,41 @@ public class GameGUI implements ActionListener  {
 		
 		
 	}
-
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		 if (arg0.getKeyCode()==KeyEvent.VK_ENTER){
+		    	GameUTIL gu = new GameUTIL();
+		    	num = Double.parseDouble(tf.getText());
+				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
+					gu.hp_monster = gu.hp_monster-gu.dmg_player;
+					hpbar_monster.setValue(gu.hp_monster);
+					gu.seed = System.nanoTime( );
+					gu.rand = new Random( gu.seed );
+					index_button = gu.rand.nextInt(23)+(a*22);
+					tf.setText("");
+					tf.requestFocusInWindow();
+					if(gu.hp_monster > 0) {
+						txt.setText(GameUTIL.num_24[index_button][0]);
+					} else {
+						txt.setText("");
+					}
+				}
+				else {
+					gu.hp_player -= 10;
+				}
+		    }
+	
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+}
 }
