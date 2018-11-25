@@ -138,7 +138,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
 		{
 		try {
-			bim = (BufferedImage) ImageIO.read(new File("asset\\model\\knight\\4cdeced68775d38259726f92199c3a6c.gif"));
+			bim = (BufferedImage) ImageIO.read(new File("asset\\model\\knight\\dumb-knight-2.gif"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -240,6 +240,22 @@ public class GameGUI implements ActionListener,KeyListener  {
 			e.printStackTrace();
 		}
 	}
+	public void change_to_first_cutscene() {
+		for(int i=0;i<=1;i++) {
+		JLabel lb = new JLabel();
+		fr.getContentPane().removeAll();
+		fr.repaint();
+		lb.setIcon(images_background.get(i));
+		fr.add(lb);
+		fr.validate();
+		fr.repaint();
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		}
+	}
 	public void change_to_fight(String back) {
 		fr.getContentPane().removeAll();
 		fr.revalidate();
@@ -256,7 +272,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         p_cham = new TransparentPanel();
         p_cham.setLayout(new BorderLayout());
         p_cham.setBackground(new Color(0,0,0,0));
-        JLabel keeptxt = new JLabel(new ImageIcon("C:\\\\\\\\Users\\\\\\\\Cystle0\\\\\\\\eclipse-workspace\\\\\\\\projectjava\\\\\\\\Adventure-Game-OOP-Project\\\\\\\\images\\\\\\\\old_paper.jpg"));
+        JLabel keeptxt = new JLabel(new ImageIcon("images\\old_paper.jpg"));
         lb_player = new JLabel();
         lb_player_character = new JLabel();
         lb_monster_character = new JLabel();
@@ -267,11 +283,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         keeptxt.setLayout(new BorderLayout());
         keeptxt.add(txt, BorderLayout.CENTER);
         
-        icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
-        icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
-        
-        icon_player_character = new ImageIcon("asset\\model\\knight\\4cdeced68775d38259726f92199c3a6c.gif");
-        icon_monster_character = new ImageIcon("asset\\model\\knight\\Random_dragon_gif_by_ribozurai-d30makh.gif");
+   
         
 //      lb_player_character.setIcon(icon_player_character);
 //      lb_monster_character.setIcon(icon_monster_character);
@@ -337,53 +349,40 @@ public class GameGUI implements ActionListener,KeyListener  {
 		BufferedImage filter2 = r.filter(bin2, null);
 		lb_monster_character.setIcon(new ImageIcon(filter2));
 		}
+		try {
+			TimeUnit.MILLISECONDS.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	public void add_img() throws IOException {
-		img = new ImageIcon("asset\\model\\knight\\testbac.jpg");
+		icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
+        icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
+        
+        icon_player_character = new ImageIcon("asset\\model\\knight\\dumb-knight-2.gif");
+//        icon_monster_character = new ImageIcon("asset\\model\\knight\\dumb-knight-12.gif");
+        
+		img = new ImageIcon("asset\\model\\knight\\testbac.jpg");//add cutsecene
 		images_background.add(img);
-		img = new ImageIcon("asset\\model\\knight\\testbac2.png");
+		img = new ImageIcon("asset\\model\\knight\\testbac2.png");//add cutsecene
 		images_background.add(img);
 		img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_11.png"));
 		images_crystal_boss.add(img_boss);
 		
-		img_player = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
+//		img_player = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
 		
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
+//		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));
 
-		img_player = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
+//		img_player = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
 
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));//add boss for opa
 		images_boss.add(img_boss);
 		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
 		images_boss.add(img_boss);
 		
-		img = new ImageIcon("asset\\model\\knight\\monster_hunter___rathalos_by_zedotagger-d9h1g8e.gif");
+		img = new ImageIcon("asset\\model\\knight\\boss_11.gif");//add boss for icon
 		images_icon_boss.add(img);
 	}
-//	public void keyPressed(KeyEvent e) {
-//	    if (e.getKeyCode()==KeyEvent.VK_ENTER){
-//	    	GameUTIL gu = new GameUTIL();
-//	    	num = Double.parseDouble(tf.getText());
-//			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
-//				gu.hp_monster = gu.hp_monster-gu.dmg_player;
-//				hpbar_monster.setValue(gu.hp_monster);
-//				gu.seed = System.nanoTime( );
-//				gu.rand = new Random( gu.seed );
-//				index_button = gu.rand.nextInt(23)+(a*22);
-//				tf.setText("");
-//				tf.requestFocusInWindow();
-//				if(gu.hp_monster > 0) {
-//					txt.setText(GameUTIL.num_24[index_button][0]);
-//				} else {
-//					txt.setText("");
-//				}
-//			}
-//			else {
-//				gu.hp_player -= 10;
-//			}
-//	    }
-//
-//	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		GameUTIL gu = new GameUTIL();
@@ -391,10 +390,13 @@ public class GameGUI implements ActionListener,KeyListener  {
 			num = Double.parseDouble(tf.getText());
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 				gu.hp_monster = gu.hp_monster-gu.dmg_player;
+				System.out.println(lb_player_character.getLocation().x);
+				lb_player_character.setLocation(lb_player_character.getLocation().x+10, lb_player_character.getLocation().y);
+				System.out.println(lb_player_character.getLocation().x);
 				hpbar_monster.setValue(gu.hp_monster);
 				gu.seed = System.nanoTime( );
 				gu.rand = new Random( gu.seed );
-				index_button = gu.rand.nextInt(23)+(a*22);
+				index_button = gu.rand.nextInt(23)+(a*40);
 				tf.setText("");
 				tf.requestFocusInWindow();
 				if(gu.hp_monster > 0) {
@@ -405,12 +407,14 @@ public class GameGUI implements ActionListener,KeyListener  {
 			}
 			else {
 				gu.hp_player -= 10;
+				hpbar_player.setValue(gu.hp_player);
+				txt.setText("");
 			}
 		}
 		else if(arg0.getSource()==b_change) {
 			gu.seed = System.nanoTime( );
 			gu.rand = new Random( gu.seed );
-			index_button = gu.rand.nextInt(23)+(a*22);
+			index_button = gu.rand.nextInt(23)+(a*40);
 			gu.hp_player -= 20;
 			hpbar_player.setValue(gu.hp_player);
 			txt.setText(GameUTIL.num_24[index_button][0]);
@@ -428,7 +432,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 					hpbar_monster.setValue(gu.hp_monster);
 					gu.seed = System.nanoTime( );
 					gu.rand = new Random( gu.seed );
-					index_button = gu.rand.nextInt(23)+(a*22);
+					index_button = gu.rand.nextInt(23)+(a*40);
 					tf.setText("");
 					tf.requestFocusInWindow();
 					if(gu.hp_monster > 0) {
@@ -439,6 +443,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 				}
 				else {
 					gu.hp_player -= 10;
+					hpbar_player.setValue(gu.hp_player);
+					txt.setText("");
 				}
 		    }
 	

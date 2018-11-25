@@ -35,14 +35,14 @@ public class MainGame{
 			if(locks == 0) {
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
-				gui.index_button = util.rand.nextInt(23)+(gui.a*22);
+				gui.index_button = util.rand.nextInt(23)+(gui.a*40);
 				try {
 					gui.add_img();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				gui.change_to_cutscene();
+				gui.change_to_first_cutscene();
 				gui.change_to_fight(backgroundlist[state]);
 				locks = 1;
 			}
@@ -56,7 +56,7 @@ public class MainGame{
 				gui.a++;
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
-		        gui.index_button = util.rand.nextInt(23)+(gui.a*22);
+		        gui.index_button = util.rand.nextInt(23)+(gui.a*40);
 		        gui.txt.setText(util.num_24[gui.index_button][0]);
 				gui.change_to_cutscene();
 				gui.change_to_fight(backgroundlist[state]);
