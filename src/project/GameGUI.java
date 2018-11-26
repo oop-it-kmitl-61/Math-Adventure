@@ -31,7 +31,7 @@ import javax.swing.border.LineBorder;
 public class GameGUI implements ActionListener,KeyListener  {
 	double num;
 //	float alp_img;
-	int a = 0, b=-1, index_button=0;
+	int a = 0, b=-1, index_button=0,change;
 	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
 	static JLabel lb_player,lb_monster, lb_player_character, lb_monster_character,txt, keeptxt;
 	static JFrame fr;
@@ -184,7 +184,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		tf.setEditable(true);
 		tf.addKeyListener(this);
 		p_player.add(tf);
-		tf.requestFocusInWindow();
+		tf.setEditable(false);
 	}
 	public void button_hit() {
 		b_hit = new JButton("Hit");
@@ -227,6 +227,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 	}
 	public void change_to_cutscene() {
 		b++;
+		change = 0;
 		JLabel lb = new JLabel();
 		fr.getContentPane().removeAll();
 		fr.repaint();
@@ -234,14 +235,20 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.add(lb);
 		fr.validate();
 		fr.repaint();
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		fr.requestFocus();
+		fr.addKeyListener(this);
+		while(change == 0) {
+			System.out.println(change);
 		}
+//		try {
+//			TimeUnit.SECONDS.sleep(2);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 	public void change_to_first_cutscene() {
 		for(int i=0;i<=1;i++) {
+		change = 0;
 		JLabel lb = new JLabel();
 		fr.getContentPane().removeAll();
 		fr.repaint();
@@ -249,11 +256,15 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.add(lb);
 		fr.validate();
 		fr.repaint();
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		fr.addKeyListener(this);
+		while(change == 0) {
+			System.out.println("");
 		}
+//		try {
+//			TimeUnit.SECONDS.sleep(2);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		}
 	}
 	public void change_to_fight(String back) {
@@ -312,6 +323,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		change_monster();
 		p_player.validate();
 		p_monster.validate();
+		tf.requestFocus();
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
@@ -400,7 +412,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 				gu.rand = new Random( gu.seed );
 				index_button = gu.rand.nextInt(23)+(a*40);
 				tf.setText("");
-				tf.requestFocusInWindow();
+				tf.requestFocus();
 				if(gu.hp_monster > 0) {
 					txt.setText(GameUTIL.num_24[index_button][0]);
 				} else {
@@ -436,7 +448,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 					gu.rand = new Random( gu.seed );
 					index_button = gu.rand.nextInt(23)+(a*40);
 					tf.setText("");
-					tf.requestFocusInWindow();
+					tf.requestFocus();
 					if(gu.hp_monster > 0) {
 						txt.setText(GameUTIL.num_24[index_button][0]);
 					} else {
@@ -449,6 +461,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 //					txt.setText("");
 				}
 		    }
+		 else if(arg0.getKeyCode()==KeyEvent.VK_SPACE) {
+			 change = 1;
+		 }
 	
 		// TODO Auto-generated method stub
 		

@@ -264,7 +264,7 @@ public class GameUTIL{
 	};
 	static int hp_player=300,hp_monster=300;
 	int dmg_player=rand.nextInt(10)+40;
-	int dmg_monster=rand.nextInt(5)+10;
+	int dmg_monster=rand.nextInt(10)+10;
 	public void damage() {
 		try {
 			TimeUnit.SECONDS.sleep(1);
