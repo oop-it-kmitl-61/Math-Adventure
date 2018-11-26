@@ -10,8 +10,8 @@ import javax.swing.*;
 
 
 public class GameUTIL{
-	static long seed;
-	static Random rand;
+	static long seed = System.nanoTime( );
+	static Random rand = new Random( seed );
 	static int d=0,time_dmg = 0 ;
 	Double sub,num;
 	static String num_24[][] = new String[][] {
@@ -262,8 +262,9 @@ public class GameUTIL{
 		{"(36x258)+(36x25)","10188"},
 		{"(39x9)+(39x9)","702"},//40
 	};
-	static int hp_player=300,hp_monster=200;
-	int dmg_monster=10,dmg_player=50;
+	static int hp_player=300,hp_monster=300;
+	int dmg_player=rand.nextInt(10)+40;
+	int dmg_monster=rand.nextInt(5)+10;
 	public void damage() {
 		try {
 			TimeUnit.SECONDS.sleep(1);

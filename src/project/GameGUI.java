@@ -195,11 +195,11 @@ public class GameGUI implements ActionListener,KeyListener  {
 		hpbarp_monster = new JPanel();
 		hpbarp_monster.setBounds(0,0, 300, 200);
 		
-		hpbar_monster = new JProgressBar(0,500);
+		hpbar_monster = new JProgressBar(0,300);
 		hpbar_monster.setPreferredSize(new Dimension(300,35));
 		hpbar_monster.setBackground(Color.RED);
 		hpbar_monster.setForeground(Color.GREEN);
-		hpbar_monster.setValue(500);
+		hpbar_monster.setValue(300);
 		hpbarp_monster.add(hpbar_monster);
 		p_player.add(hpbarp_monster);
 	}
@@ -221,8 +221,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 		p_player.add(b_change);
 	}
 	public void change_monster() {
-		hpbar_monster.setValue(500);
-		GameUTIL.hp_monster = 500;
+		GameUTIL.hp_monster = 300;
+		hpbar_monster.setValue(GameUTIL.hp_monster);
 		change();
 	}
 	public void change_to_cutscene() {
@@ -382,6 +382,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 		
 		img = new ImageIcon("asset\\model\\knight\\boss_11.gif");//add boss for icon
 		images_icon_boss.add(img);
+		img = new ImageIcon("asset\\model\\knight\\boss_22.gif");//add boss for icon
+		images_icon_boss.add(img);
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -408,7 +410,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 			else {
 				gu.hp_player -= 10;
 				hpbar_player.setValue(gu.hp_player);
-				txt.setText("");
+//				txt.setText("");
 			}
 		}
 		else if(arg0.getSource()==b_change) {
@@ -444,7 +446,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 				else {
 					gu.hp_player -= 10;
 					hpbar_player.setValue(gu.hp_player);
-					txt.setText("");
+//					txt.setText("");
 				}
 		    }
 	

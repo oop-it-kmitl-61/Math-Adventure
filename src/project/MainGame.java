@@ -17,8 +17,8 @@ import javax.swing.*;
 //import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class MainGame{
-	private static int locks = 0, state = 0;
 	public static void main(String[] args) {
+		int locks = 0,state = 0;
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
 		String[] backgroundlist = {"images\\bg_1_169.jpg", 
@@ -67,8 +67,8 @@ public class MainGame{
 				util.hp_player=300;
 				gui.a=0;
 				util.d=0;
-				util.hp_monster=500;
-				new MainGame();
+				util.hp_monster=300;
+				main(args);
 			}
 		}
 	}
