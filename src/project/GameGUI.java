@@ -184,7 +184,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 		tf.setEditable(true);
 		tf.addKeyListener(this);
 		p_player.add(tf);
-		tf.setEditable(false);
 	}
 	public void button_hit() {
 		b_hit = new JButton("Hit");
@@ -238,7 +237,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.requestFocus();
 		fr.addKeyListener(this);
 		while(change == 0) {
-			System.out.println(change);
+			System.out.println("");
 		}
 //		try {
 //			TimeUnit.SECONDS.sleep(2);
