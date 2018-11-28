@@ -43,6 +43,7 @@ public class MainGame{
 					e.printStackTrace();
 				}
 				gui.change_to_first_cutscene();
+				gui.change_to_cutscene();
 				gui.change_to_fight(backgroundlist[state]);
 				locks = 1;
 			}
@@ -54,6 +55,18 @@ public class MainGame{
 				gui.monster_dead();
 				util.hp_player=300;
 				gui.a++;
+				switch(gui.a) {
+				case 1:gui.b+=6;
+				break;
+				case 2:gui.b+=2;
+				break;
+				case 3:gui.b+=5;
+				break;
+				case 4:gui.b+=5;
+				break;
+				case 5:gui.b+=2;
+				break;
+				}
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
 		        gui.index_button = util.rand.nextInt(23)+(gui.a*40);
