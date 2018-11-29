@@ -12,7 +12,7 @@ import javax.swing.*;
 public class GameUTIL{
 	static long seed = System.nanoTime( );
 	static Random rand = new Random( seed );
-	static int d=0,time_dmg = 0 ;
+	static int d=0,time_dmg = 0,bonus_dmg=5 ;
 	Double sub,num;
 	static String num_24[][] = new String[][] {
 		
@@ -263,7 +263,7 @@ public class GameUTIL{
 		{"(39x9)+(39x9)","702"},//40
 	};
 	static int hp_player=300,hp_monster=300;
-	int dmg_player=rand.nextInt(10)+40;
+	int dmg_player=30;
 	int dmg_monster=rand.nextInt(10)+10;
 	public void damage() {
 		try {
@@ -271,10 +271,14 @@ public class GameUTIL{
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
+		bonus_dmg-=1;
 		if(time_dmg!=5) {
 			time_dmg+=1;
 		}
 		else {
+		if(bonus_dmg<0) {
+			bonus_dmg=0;
+		}
 		hp_player = hp_player-dmg_monster;
 		GameGUI.hpbar_player.setValue(hp_player);
 		time_dmg=0;

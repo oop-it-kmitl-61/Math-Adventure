@@ -168,7 +168,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 	}
 	public void change_to_first_cutscene() {
-		for(int i=0;i<=1;i++) {
+		for(int i=0;i<=12;i++) {
 		change = 0;
 		JLabel lb = new JLabel();
 		fr.getContentPane().removeAll();
@@ -283,6 +283,37 @@ public class GameGUI implements ActionListener,KeyListener  {
 			e.printStackTrace();
 		}
 	}
+	public void player_dead() {
+		txt.setText(null);
+		for(float alp_img=0;alp_img<=1;alp_img+=0.25) 
+		{
+		BufferedImage bim2 = null;
+		try {
+			bim2 = (BufferedImage) ImageIO.read(new File("asset\\model\\banner\\gameover.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		};
+		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D createGraphics2= bin2.createGraphics();
+		createGraphics2.drawImage(bim2, null, 0, 0);
+		float alp[] = new float[] {1f,1f,1f,alp_img};
+		float def[] = new float[] {0,0,0,0};
+		RescaleOp r = new RescaleOp(alp,def,null);
+		BufferedImage filter2 = r.filter(bin2, null);
+		txt.setIcon(new ImageIcon(filter2));
+		try {
+			TimeUnit.MILLISECONDS.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		}
+		try {
+			TimeUnit.MILLISECONDS.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	public void add_img() throws IOException {
 		icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
         icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
@@ -292,6 +323,28 @@ public class GameGUI implements ActionListener,KeyListener  {
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.1.jpg");//add cutsecene
 		images_cutscene.add(img);
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.2.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.3.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.4.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.5.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.6.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.7.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.8.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.9.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.10.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.11.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.12.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.13.jpg");//add cutsecene
 		images_cutscene.add(img);
 		
 		img = new ImageIcon("asset\\model\\Stage Scene\\Babilonia\\Babilonia_st.jpg");
@@ -379,7 +432,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		if(arg0.getSource()==b_hit) {
 			num = Double.parseDouble(tf.getText());
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
-				gu.hp_monster = gu.hp_monster-gu.dmg_player;
+				gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
 				hpbar_monster.setValue(gu.hp_monster);
 				gu.seed = System.nanoTime( );
 				gu.rand = new Random( gu.seed );
@@ -388,6 +441,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 				tf.requestFocus();
 				if(gu.hp_monster > 0) {
 					txt.setText(GameUTIL.num_24[index_button][0]);
+					gu.bonus_dmg=5;
 				} else {
 					txt.setText("");
 				}
@@ -405,6 +459,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 			gu.hp_player -= 20;
 			hpbar_player.setValue(gu.hp_player);
 			txt.setText(GameUTIL.num_24[index_button][0]);
+			gu.bonus_dmg=5;
 		}
 		
 		
@@ -415,15 +470,17 @@ public class GameGUI implements ActionListener,KeyListener  {
 		    	GameUTIL gu = new GameUTIL();
 		    	num = Double.parseDouble(tf.getText());
 				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
-					gu.hp_monster = gu.hp_monster-gu.dmg_player;
+					gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
 					hpbar_monster.setValue(gu.hp_monster);
 					gu.seed = System.nanoTime( );
 					gu.rand = new Random( gu.seed );
 					index_button = gu.rand.nextInt(23)+(a*40);
 					tf.setText("");
 					tf.requestFocus();
+					System.out.println(gu.dmg_player+gu.bonus_dmg*2);
 					if(gu.hp_monster > 0) {
 						txt.setText(GameUTIL.num_24[index_button][0]);
+						gu.bonus_dmg=5;
 					} else {
 						txt.setText("");
 					}
