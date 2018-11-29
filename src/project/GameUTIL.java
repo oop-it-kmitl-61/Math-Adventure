@@ -262,7 +262,7 @@ public class GameUTIL{
 		{"(36x258)+(36x25)","10188"},
 		{"(39x9)+(39x9)","702"},//40
 	};
-	static int hp_player=100,hp_monster=300;
+	static int hp_player=300,hp_monster=300;
 //	int dmg_player=rand.nextInt(10)+40;
 	int dmg_player=30;
 	int dmg_monster=rand.nextInt(10)+10;
