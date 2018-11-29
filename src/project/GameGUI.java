@@ -168,7 +168,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 	}
 	public void change_to_first_cutscene() {
-		for(int i=0;i<=1;i++) {
+		for(int i=0;i<=12;i++) {
 		change = 0;
 		JLabel lb = new JLabel();
 		fr.getContentPane().removeAll();
@@ -323,6 +323,28 @@ public class GameGUI implements ActionListener,KeyListener  {
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.1.jpg");//add cutsecene
 		images_cutscene.add(img);
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.2.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.3.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.4.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.5.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.6.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.7.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.8.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.9.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.10.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.11.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.12.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.13.jpg");//add cutsecene
 		images_cutscene.add(img);
 		
 		img = new ImageIcon("asset\\model\\Stage Scene\\Babilonia\\Babilonia_st.jpg");
