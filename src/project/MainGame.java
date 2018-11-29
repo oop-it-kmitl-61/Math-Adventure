@@ -21,6 +21,7 @@ public class MainGame{
 		int locks = 0,state = 0;
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
+		util.bonus_dmg=5;
 		String[] backgroundlist = {"images\\bg_1_169.jpg", 
 				"images\\bg_2_169.jpg", 
 				"images\\bg_3_169.jpg", 
@@ -73,8 +74,10 @@ public class MainGame{
 		        gui.txt.setText(util.num_24[gui.index_button][0]);
 				gui.change_to_cutscene();
 				gui.change_to_fight(backgroundlist[state]);
+				util.bonus_dmg=5;
 			}
 			else if(util.hp_player<=0) {
+				gui.player_dead();
 				state = 0;
 				gui.fr.dispose();
 				util.hp_player=300;
