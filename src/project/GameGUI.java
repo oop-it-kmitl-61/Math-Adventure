@@ -14,6 +14,8 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -24,14 +26,19 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-//import com.sun.javafx.geom.Rectangle;
-//import com.sun.javafx.tk.Toolkit;
-//import com.sun.prism.Graphics;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
+
 
 public class GameGUI implements ActionListener,KeyListener  {
+	GameUTIL gu = new GameUTIL();
 	double num;
 //	float alp_img;
-	int a = 0, b=2, index_button=0,change,c=0;
+	static int a = 0;
+	int b=2,i=0;
+	int index_button=0;
+	int change;
+	int c=0;
 	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
 	static JLabel lb_player,lb_monster, lb_player_character, lb_monster_character,txt, keeptxt;
 	static JFrame fr;
@@ -146,6 +153,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		change();
 	}
 	public void change_to_cutscene() {
+		i=0;
 		for(;c<b;c++) {
 		change = 0;
 		JLabel lb = new JLabel();
@@ -158,6 +166,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.requestFocus();
 		fr.addKeyListener(this);
 		while(change < 20) {
+			if(i==1) {
+				break;
+			}
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				change++;
@@ -168,6 +179,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 	}
 	public void change_to_first_cutscene() {
+		i=0;
 		for(int i=0;i<=12;i++) {
 		change = 0;
 		JLabel lb = new JLabel();
@@ -179,6 +191,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.repaint();
 		fr.addKeyListener(this);
 		while(change < 20) {
+			if(this.i==1) {
+				break;
+			}
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				change++;
@@ -428,11 +443,25 @@ public class GameGUI implements ActionListener,KeyListener  {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		GameUTIL gu = new GameUTIL();
 		if(arg0.getSource()==b_hit) {
 			num = Double.parseDouble(tf.getText());
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 				gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
+//				FileInputStream fin = null;
+//				try {
+//					fin = new FileInputStream("test.mp3");
+//				} catch (FileNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				Player p;
+//					try {
+//						p = new Player(fin);
+//						p.play();
+//					} catch (JavaLayerException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 				hpbar_monster.setValue(gu.hp_monster);
 				gu.seed = System.nanoTime( );
 				gu.rand = new Random( gu.seed );
@@ -467,17 +496,30 @@ public class GameGUI implements ActionListener,KeyListener  {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		 if (arg0.getKeyCode()==KeyEvent.VK_ENTER){
-		    	GameUTIL gu = new GameUTIL();
 		    	num = Double.parseDouble(tf.getText());
 				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 					gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
+//					FileInputStream fin = null;
+//					try {
+//						fin = new FileInputStream("test.mp3");
+//					} catch (FileNotFoundException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//					Player p;
+//						try {
+//							p = new Player(fin);
+//							p.play();
+//						} catch (JavaLayerException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
 					hpbar_monster.setValue(gu.hp_monster);
 					gu.seed = System.nanoTime( );
 					gu.rand = new Random( gu.seed );
 					index_button = gu.rand.nextInt(23)+(a*40);
 					tf.setText("");
 					tf.requestFocus();
-					System.out.println(gu.dmg_player+gu.bonus_dmg*2);
 					if(gu.hp_monster > 0) {
 						txt.setText(GameUTIL.num_24[index_button][0]);
 						gu.bonus_dmg=5;
@@ -488,12 +530,15 @@ public class GameGUI implements ActionListener,KeyListener  {
 				else {
 					gu.hp_player -= 10;
 					hpbar_player.setValue(gu.hp_player);
-//					txt.setText("");
 				}
 		    }
 		 else if(arg0.getKeyCode()==KeyEvent.VK_SPACE) {
 			 change = 20;
 		 }
+		 else if(arg0.getKeyCode() == KeyEvent.VK_ESCAPE)
+		    {
+		        i=1;
+		    }
 	
 		// TODO Auto-generated method stub
 		

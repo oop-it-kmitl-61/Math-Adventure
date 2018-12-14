@@ -3,20 +3,24 @@ package project;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import javazoom.jl.decoder.*;
+import javazoom.jl.player.*;
 
 import javax.swing.*;
 
 
-public class GameUTIL{
+public class GameUTIL implements Runnable{
 	static long seed = System.nanoTime( );
 	static Random rand = new Random( seed );
-	static int d=0,time_dmg = 0,bonus_dmg=5 ;
+	static int d=0,time_dmg = 0,bonus_dmg=5,sound=0,time=0 ;
 	Double sub,num;
 	static String num_24[][] = new String[][] {
 		
-		{"3* (7+4) = ?","33"},
+		{"3(7+4) = ?","33"},
 		{"5(3+4) = ?","35"},
 		{"9(5+4) = ?","81"},
 		{"7(5+3) = ?","56"},
@@ -265,7 +269,7 @@ public class GameUTIL{
 	static int hp_player=300,hp_monster=300;
 	int dmg_player=30;
 	int dmg_monster=rand.nextInt(10)+10;
-	public void damage() {
+	public void damage() throws Exception {
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e1) {
@@ -280,35 +284,51 @@ public class GameUTIL{
 			bonus_dmg=0;
 		}
 		hp_player = hp_player-dmg_monster;
+//		FileInputStream fin = new FileInputStream("test.mp3");
+//		Player p;
+//			p = new Player(fin);
+//			p.play();
 		GameGUI.hpbar_player.setValue(hp_player);
 		time_dmg=0;
 		}
 	}
 	
-	public double computeAnother(String equation) {
-        double result = 0.0;
-        String noMinus = equation.replace("-", "+-");
-        String[] byPluses = noMinus.split("\\+");
-
-        for (String multipl : byPluses) {
-            String[] byMultipl = multipl.split("\\*");
-            double multiplResult = 1.0;
-            for (String operand : byMultipl) {
-                if (operand.contains("/")) {
-                    String[] division = operand.split("\\/");
-                    double divident = Double.parseDouble(division[0]);
-                    for (int i = 1; i < division.length; i++) {
-                        divident /= Double.parseDouble(division[i]);
-                    }
-                    multiplResult *= divident;
-                } else {
-                    multiplResult *= Double.parseDouble(operand);
-                }
-            }
-            result += multiplResult;
-        }
-
-        return result;
-    }
-
+	public static void play_music() throws Exception {
+		while(true) {
+		if(d==0) {//sound first cut scene
+			FileInputStream fin = new FileInputStream("test.mp3");
+			Player p;
+				p = new Player(fin);
+				p.play();
+		}
+		else if(sound==0) {//sound cut scene
+			FileInputStream fin = new FileInputStream("test2.mp3");
+			Player p;
+				p = new Player(fin);
+				p.play();
+		}
+		else if(hp_player>75) {//sound start fight
+			FileInputStream fin = new FileInputStream("test.mp3");
+			Player p;
+				p = new Player(fin);
+				p.play();
+		}
+		else {//sound when almost die
+			FileInputStream fin = new FileInputStream("test2.mp3");
+			Player p;
+				p = new Player(fin);
+				p.play();
+		}
+	}
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+			try {
+				play_music();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 }

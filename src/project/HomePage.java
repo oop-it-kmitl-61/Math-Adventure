@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class HomePage {
+public class HomePage implements Runnable {
 
 //    public static void main(String[] args) {
 //        new HomePage();
@@ -179,4 +179,10 @@ public class HomePage {
             return bounds;
         }
     }
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 }
