@@ -42,7 +42,7 @@ public class HomePage implements Runnable {
 //                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
 //                }
                 GameGUI gg = new GameGUI();
-                gg.fr = new JFrame("Testing");
+                gg.fr = new JFrame("Math Adventure");
                 gg.fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 gg.fr.setLayout(new BorderLayout());
                 gg.fr.add(new MenuPane());
