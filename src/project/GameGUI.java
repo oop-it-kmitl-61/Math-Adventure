@@ -168,7 +168,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 	}
 	public void change_to_first_cutscene() {
-		for(int i=0;i<=12;i++) {
+		for(int i=0;i<=13;i++) {
 		change = 0;
 		JLabel lb = new JLabel();
 		fr.getContentPane().removeAll();
@@ -315,8 +315,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 	}
 	public void add_img() throws IOException {
-		icon_player = new ImageIcon("asset\\model\\knight\\badge_22.png");
-        icon_monster = new ImageIcon("asset\\model\\knight\\badge_11.png");
+		icon_player = new ImageIcon("asset\\model\\knight\\badge_222.png");
+        icon_monster = new ImageIcon("asset\\model\\knight\\badge_111.png");
         
         icon_player_character = new ImageIcon("asset\\model\\knight\\dumb-knight-2.gif");
 
@@ -345,6 +345,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.12.jpg");//add cutsecene
 		images_cutscene.add(img);
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.13.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.14.jpg");//add cutsecene
 		images_cutscene.add(img);
 		
 		img = new ImageIcon("asset\\model\\Stage Scene\\Babilonia\\Babilonia_st.jpg");
@@ -397,33 +399,33 @@ public class GameGUI implements ActionListener,KeyListener  {
 		img = new ImageIcon("asset\\model\\Stage Scene\\Present\\Present_1.jpg");
 		images_history.add(img);
 		
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_11.png"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_1.png"));
 		images_crystal_boss.add(img_boss);
 
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_11.gif"));//add boss for opa
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_1.gif"));//add boss for opa
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_22.gif"));
+		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
 		
-		img = new ImageIcon("asset\\model\\knight\\boss_11.gif");//add boss for icon
+		img = new ImageIcon("asset\\model\\knight\\boss_1.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_22.gif");//add boss for icon
+		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_22.gif");//add boss for icon
+		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_22.gif");//add boss for icon
+		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_22.gif");//add boss for icon
+		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_22.gif");//add boss for icon
+		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
 	}
 	@Override
@@ -460,6 +462,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 			hpbar_player.setValue(gu.hp_player);
 			txt.setText(GameUTIL.num_24[index_button][0]);
 			gu.bonus_dmg=5;
+			tf.requestFocus();
 		}
 		
 		

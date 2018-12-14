@@ -16,7 +16,7 @@ public class GameUTIL{
 	Double sub,num;
 	static String num_24[][] = new String[][] {
 		
-		{"3* (7+4) = ?","33"},
+		{"3(7+4) = ?","33"},
 		{"5(3+4) = ?","35"},
 		{"9(5+4) = ?","81"},
 		{"7(5+3) = ?","56"},
