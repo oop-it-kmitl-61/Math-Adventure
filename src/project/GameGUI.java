@@ -68,7 +68,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
 		{
 		try {
-			bim = (BufferedImage) ImageIO.read(new File("asset\\model\\knight\\dumb-knight-2.gif"));
+			bim = (BufferedImage) ImageIO.read(new File("images\\knight\\dumb-knight-2.gif"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -355,7 +355,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		{
 		BufferedImage bim2 = null;
 		try {
-			bim2 = (BufferedImage) ImageIO.read(new File("asset\\model\\banner\\gameover.png"));
+			bim2 = (BufferedImage) ImageIO.read(new File("images\\banner\\gameover.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -381,121 +381,121 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 	}
 	public void add_img() throws IOException {
-		icon_player = new ImageIcon("asset\\model\\knight\\badge_222.png");
-        icon_monster = new ImageIcon("asset\\model\\knight\\badge_111.png");
+		icon_player = new ImageIcon("images\\knight\\badge_222.png");
+        icon_monster = new ImageIcon("images\\knight\\badge_111.png");
         
-        icon_player_character = new ImageIcon("asset\\model\\knight\\dumb-knight-2.gif");
+        icon_player_character = new ImageIcon("images\\knight\\dumb-knight-2.gif");
 
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.1.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.1.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.2.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.2.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.3.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.3.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.4.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.4.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.5.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.5.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.6.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.6.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.7.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.7.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.8.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.8.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.9.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.9.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.10.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.10.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.11.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.11.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.12.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.12.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.13.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.13.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.14.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.14.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.15.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.15.jpg");//add cutsecene
 		images_cutscene.add(img);
-		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.16.jpg");//add cutsecene
+		img = new ImageIcon("images\\cutscene\\Paper.Project.16.jpg");//add cutsecene
 		images_cutscene.add(img);
 		
-		img = new ImageIcon("asset\\model\\Stage Scene\\Babilonia\\Babilonia_st.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Babilonia\\Babilonia_st.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Babilonia\\Babilonia_1.jpg");
-		images_history.add(img);
-		
-		img = new ImageIcon("asset\\model\\Stage Scene\\Greek\\Greek_st.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Greek\\Greek_1.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Greek\\Greek_2.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Greek\\Greek_3.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Greek\\Greek_4.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Greek\\Greek_5.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Babilonia\\Babilonia_1.jpg");
 		images_history.add(img);
 		
-		img = new ImageIcon("asset\\model\\Stage Scene\\Middle (stage 3)\\Middle_st_1.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Greek\\Greek_st.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Middle (stage 3)\\Middle_1_1.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Greek\\Greek_1.jpg");
 		images_history.add(img);
-		
-		img = new ImageIcon("asset\\model\\Stage Scene\\Renaissance\\Renaissance_st.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Greek\\Greek_2.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Renaissance\\Renaissance_1.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Greek\\Greek_3.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Renaissance\\Renaissance_2.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Greek\\Greek_4.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Renaissance\\Renaissance_3.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Renaissance\\Renaissance_4.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Greek\\Greek_5.jpg");
 		images_history.add(img);
 		
-		img = new ImageIcon("asset\\model\\Stage Scene\\New-era\\New-era.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Middle (stage 3)\\Middle_st_1.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\New-era\\New-era_1.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\New-era\\New-era_2.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\New-era\\New-era_3.jpg");
-		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\New-era\\New-era_4.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Middle (stage 3)\\Middle_1_1.jpg");
 		images_history.add(img);
 		
-		img = new ImageIcon("asset\\model\\Stage Scene\\Present\\Present_st.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Renaissance\\Renaissance_st.jpg");
 		images_history.add(img);
-		img = new ImageIcon("asset\\model\\Stage Scene\\Present\\Present_1.jpg");
+		img = new ImageIcon("images\\Stage Scene\\Renaissance\\Renaissance_1.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\Renaissance\\Renaissance_2.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\Renaissance\\Renaissance_3.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\Renaissance\\Renaissance_4.jpg");
 		images_history.add(img);
 		
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\cystal_1.png"));
+		img = new ImageIcon("images\\Stage Scene\\New-era\\New-era.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\New-era\\New-era_1.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\New-era\\New-era_2.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\New-era\\New-era_3.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\New-era\\New-era_4.jpg");
+		images_history.add(img);
+		
+		img = new ImageIcon("images\\Stage Scene\\Present\\Present_st.jpg");
+		images_history.add(img);
+		img = new ImageIcon("images\\Stage Scene\\Present\\Present_1.jpg");
+		images_history.add(img);
+		
+		img_boss = ImageIO.read(new File("images\\knight\\cystal_1.png"));
 		images_crystal_boss.add(img_boss);
 
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_1.gif"));//add boss for opa
+		img_boss = ImageIO.read(new File("images\\knight\\boss_1.gif"));//add boss for opa
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("asset\\model\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
 		
-		img = new ImageIcon("asset\\model\\knight\\boss_1.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_1.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("asset\\model\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
 	}
 	@Override
