@@ -29,10 +29,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class HomePage implements Runnable {
 
-//    public static void main(String[] args) {
-//        new HomePage();
-//    }
-
     public HomePage() {
         EventQueue.invokeLater(new Runnable() {
             @Override
@@ -59,7 +55,7 @@ public class HomePage implements Runnable {
 
         public MenuPane() {
             try {
-            	File f = new File("images/UZKEjzG.png");
+            	File f = new File("images/cover10ss.gif");
             	img = ImageIO.read(f);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -132,7 +128,7 @@ public class HomePage implements Runnable {
 
             FontMetrics fm = g2d.getFontMetrics();
 
-            g2d.setColor(Color.BLACK);
+            g2d.setColor(Color.RED);
             g2d.setFont(new Font("Arial", Font.PLAIN, 37));
             if (selectedBounds != null) {
                 if (bounds.contains(selectedBounds)) {

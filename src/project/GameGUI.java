@@ -160,7 +160,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		JLabel lb = new JLabel(new ImageIcon(images_history.get(c)+""));
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		fr.add(lb);
+		fr.getContentPane().add(lb);
 		fr.validate();
 		fr.repaint();
 		fr.requestFocus();
@@ -193,7 +193,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		lb.add(textbox,BorderLayout.SOUTH);
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		fr.add(lb);
+		fr.getContentPane().add(lb);
 		fr.validate();
 		fr.repaint();
 		fr.addKeyListener(this);
@@ -208,9 +208,11 @@ public class GameGUI implements ActionListener,KeyListener  {
 				e.printStackTrace();
 			}
 		}
+		if(this.i==1) {
+			break;
+		}
 		}
 		last_scene = br.readLine();
-		System.out.println(last_scene);
 		br.close();
 	}
 	public void change_to_fight(String back) {
@@ -218,7 +220,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.revalidate();
 		fr.pack();
 		fr.repaint();
-		fr.setLayout(new BorderLayout());
+		fr.getContentPane().setLayout(new BorderLayout());
 		JLabel background=new JLabel(new ImageIcon(back));
         background.setLayout(new BorderLayout());
         p_player = new TransparentPanel();
@@ -256,7 +258,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         background.add(p_player,BorderLayout.NORTH);
         background.add(keeptxt,BorderLayout.CENTER);
         background.add(p_cham,BorderLayout.SOUTH);
-        fr.add(background);
+        fr.getContentPane().add(background);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         fr.revalidate();
@@ -285,7 +287,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		fr.add(lb);
+		fr.getContentPane().add(lb);
 		fr.validate();
 		fr.repaint();
 		fr.addKeyListener(this);
@@ -306,9 +308,13 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.revalidate();
 		fr.pack();
 		fr.repaint();
-		JLabel time = new JLabel();
-		time.setText(gu.leaderboard);
-		fr.add(time);
+		JLabel time = new JLabel(new ImageIcon("images\\old_paper1.jpg"));
+		time.setLayout(new BorderLayout());
+		JLabel textbox = new JLabel(gu.leaderboard,SwingConstants.CENTER);	
+		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 34);
+	    textbox.setFont(myFont);
+		time.add(textbox,BorderLayout.CENTER);
+		fr.getContentPane().add(time);
 	}
 	public void monster_dead() {
 		tf.setEditable(false);
@@ -562,19 +568,19 @@ public class GameGUI implements ActionListener,KeyListener  {
 //				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 		    	if(num==1) {
 					gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
-					FileInputStream fin = null;
-					try {
-						fin = new FileInputStream("sound\\hitsoco.mp3");
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
-					Player p;
-						try {
-							p = new Player(fin);
-							p.play();
-						} catch (JavaLayerException e) {
-							e.printStackTrace();
-						}
+//					FileInputStream fin = null;
+//					try {
+//						fin = new FileInputStream("sound\\hitsoco.mp3");
+//					} catch (FileNotFoundException e) {
+//						e.printStackTrace();
+//					}
+//					Player p;
+//						try {
+//							p = new Player(fin);
+//							p.play();
+//						} catch (JavaLayerException e) {
+//							e.printStackTrace();
+//						}
 					hpbar_monster.setValue(gu.hp_monster);
 					gu.seed = System.nanoTime( );
 					gu.rand = new Random( gu.seed );

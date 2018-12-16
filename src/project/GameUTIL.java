@@ -92,7 +92,7 @@ public class GameUTIL implements Runnable{
 				p.play();
 		}
 		else if(hp_player>75) {//sound start fight
-			FileInputStream fin = new FileInputStream("sound\\test.mp3");
+			FileInputStream fin = new FileInputStream("sound\\Pirates.mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();
@@ -104,7 +104,7 @@ public class GameUTIL implements Runnable{
 				p.play();
 		}
 		else if(hp_player<=0) {//sound when die
-			FileInputStream fin = new FileInputStream("sound\\test.mp3");
+			FileInputStream fin = new FileInputStream("sound\\gameover.mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();
