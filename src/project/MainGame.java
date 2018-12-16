@@ -19,6 +19,9 @@ public class MainGame{
 		int locks = 0,state = 0;
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
+		util.play_time_min=0;
+		util.play_time_sec=0;
+		util.play_time_millisec=0;
 		Thread t = new Thread(util);
 		Thread t1 = new Thread(util);
 		Thread t2 = new Thread(util);
@@ -38,6 +41,9 @@ public class MainGame{
 		Thread t_cutscene3 = new Thread(util);
 		Thread t_cutscene4 = new Thread(util);
 		Thread t_cutscene5 = new Thread(util);
+		Thread t_die = new Thread(util);
+		Thread t_time = new Thread(util);
+		Thread t_end = new Thread(util);
 		util.bonus_dmg=5;
 		String[] backgroundlist = {"images\\bg_1_169.jpg", 
 				"images\\bg_2_169.jpg", 
@@ -45,10 +51,16 @@ public class MainGame{
 				"images\\bg_4_169.jpg",
 				"images\\bg_5_169.jpg", 
 				"images\\Bg_castle_1.png"};
+		try {
+			util.add_quiz();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		new HomePage();
         t.start();
 		while(util.d==0) {
-			System.out.println(util.d);
+			System.out.println(0);
 		}
 		t.stop();
 		while(gui.a<=5) {
@@ -66,9 +78,11 @@ public class MainGame{
 				gui.change_to_cutscene();
 				t_cutscene.stop();
 				util.sound=1;
+				locks = 1;
 				t1.start();
 				gui.change_to_fight(backgroundlist[state]);
-				locks = 1;
+				util.play=1;
+				t_time.start();
 			}
 			while(util.hp_monster>0&&util.hp_player>0) {
 				try {
@@ -76,6 +90,7 @@ public class MainGame{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				util.play=0;
 				if(gui.a==0&&util.hp_player<=75&&util.time==0) {
 					t1.stop();
 					t11.start();
@@ -135,6 +150,7 @@ public class MainGame{
 				
 				case 2:gui.b+=2;
 				t2.stop();
+				t22.stop();
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
 		        gui.index_button = util.rand.nextInt(23)+(gui.a*40);
@@ -151,6 +167,7 @@ public class MainGame{
 				
 				case 3:gui.b+=5;
 				t3.stop();
+				t33.stop();
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
 		        gui.index_button = util.rand.nextInt(23)+(gui.a*40);
@@ -167,6 +184,7 @@ public class MainGame{
 				
 				case 4:gui.b+=5;
 				t4.stop();
+				t44.stop();
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
 		        gui.index_button = util.rand.nextInt(23)+(gui.a*40);
@@ -183,6 +201,7 @@ public class MainGame{
 				
 				case 5:gui.b+=2;
 				t5.stop();
+				t55.stop();
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
 		        gui.index_button = util.rand.nextInt(23)+(gui.a*40);
@@ -199,18 +218,14 @@ public class MainGame{
 				}
 			}
 			else if(util.hp_player<=0) {
-//				t1.stop();
 				t11.stop();
-//				t2.stop();
 				t22.stop();
-//				t3.stop();
 				t33.stop();
-//				t4.stop();
 				t44.stop();
-//				t5.stop();
 				t55.stop();
-//				t6.stop();
 				t66.stop();
+				t_time.stop();
+				t_die.start();
 				gui.player_dead();
 				state = 0;
 				gui.fr.dispose();
@@ -220,8 +235,34 @@ public class MainGame{
 				util.time=0;
 				util.d=0;
 				util.hp_monster=300;
+				t_die.stop();
 				main(args);
 			}
+		}
+		t6.stop();
+		t66.stop();
+		t_time.stop();
+		t_end.start();
+		try {
+			util.readscore();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		util.leaderboard += "<html>Your Score : "+util.play_time_min+":"+util.play_time_sec+":"+util.play_time_millisec+"<br>";
+		for(int i=0;i<util.score.size();i++) {
+			util.leaderboard += i+1+". : "+util.score.get(i)+"<br>";
+			if(i==9) {
+				break;
+			}
+		}
+		util.leaderboard+="</html>";
+		gui.change_to_end();
+		try {
+			util.writescore();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

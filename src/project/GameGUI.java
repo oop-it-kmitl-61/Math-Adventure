@@ -156,10 +156,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 		i=0;
 		for(;c<b;c++) {
 		change = 0;
-		JLabel lb = new JLabel();
+		JLabel lb = new JLabel(new ImageIcon(images_history.get(c)+""));
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		lb.setIcon(images_history.get(c));
 		fr.add(lb);
 		fr.validate();
 		fr.repaint();
@@ -182,10 +181,12 @@ public class GameGUI implements ActionListener,KeyListener  {
 		i=0;
 		for(int i=0;i<=13;i++) {
 		change = 0;
-		JLabel lb = new JLabel();
+		JLabel lb = new JLabel(new ImageIcon(images_cutscene.get(i)+""));
+		lb.setLayout(new BorderLayout());
+		JLabel textbox = new JLabel(new ImageIcon("test.png"));
+		lb.add(textbox,BorderLayout.SOUTH);
 		fr.getContentPane().removeAll();
 		fr.repaint();
-		lb.setIcon(images_cutscene.get(i));
 		fr.add(lb);
 		fr.validate();
 		fr.repaint();
@@ -260,6 +261,41 @@ public class GameGUI implements ActionListener,KeyListener  {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	public void change_to_end() {
+		i=0;
+		for(int i=14;i<=15;i++) {
+		change = 0;
+		JLabel lb = new JLabel(new ImageIcon(images_cutscene.get(i)+""));
+		lb.setLayout(new BorderLayout());
+		JLabel textbox = new JLabel(new ImageIcon("test.png"));
+		lb.add(textbox,BorderLayout.SOUTH);
+		fr.getContentPane().removeAll();
+		fr.repaint();
+		fr.add(lb);
+		fr.validate();
+		fr.repaint();
+		fr.addKeyListener(this);
+		fr.requestFocus();
+		while(change < 20) {
+			if(this.i==1) {
+				break;
+			}
+			try {
+				TimeUnit.SECONDS.sleep(1);
+				change++;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		fr.getContentPane().removeAll();
+		fr.revalidate();
+		fr.pack();
+		fr.repaint();
+		JLabel time = new JLabel();
+		time.setText(gu.leaderboard);
+		fr.add(time);
 	}
 	public void monster_dead() {
 		tf.setEditable(false);
@@ -363,6 +399,10 @@ public class GameGUI implements ActionListener,KeyListener  {
 		images_cutscene.add(img);
 		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.14.jpg");//add cutsecene
 		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.15.jpg");//add cutsecene
+		images_cutscene.add(img);
+		img = new ImageIcon("asset\\model\\cutscene\\Paper.Project.16.jpg");//add cutsecene
+		images_cutscene.add(img);
 		
 		img = new ImageIcon("asset\\model\\Stage Scene\\Babilonia\\Babilonia_st.jpg");
 		images_history.add(img);
@@ -446,7 +486,12 @@ public class GameGUI implements ActionListener,KeyListener  {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource()==b_hit) {
+			try {
 			num = Double.parseDouble(tf.getText());
+			}
+			catch(NumberFormatException e){	
+				System.out.println("please enter number");
+			}
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 				gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
 //				FileInputStream fin = null;
@@ -499,8 +544,14 @@ public class GameGUI implements ActionListener,KeyListener  {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		 if (arg0.getKeyCode()==KeyEvent.VK_ENTER){
-		    	num = Double.parseDouble(tf.getText());
-				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
+			 try {
+				num = Double.parseDouble(tf.getText());
+				}
+				catch(NumberFormatException e){	
+					System.out.println("please enter number");
+				}
+//				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
+		    	if(num==1) {
 					gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
 //					FileInputStream fin = null;
 //					try {

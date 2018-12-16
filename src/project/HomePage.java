@@ -37,10 +37,6 @@ public class HomePage implements Runnable {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-//                try {
-//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-//                }
                 GameGUI gg = new GameGUI();
                 gg.fr = new JFrame("Math Adventure");
                 gg.fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +44,6 @@ public class HomePage implements Runnable {
                 gg.fr.add(new MenuPane());
                 gg.fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 gg.fr.pack();
-//                GameGUI.fr.setLocationRelativeTo(null);
                 gg.fr.setVisible(true);
             }
         });
