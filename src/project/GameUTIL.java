@@ -148,12 +148,10 @@ public class GameUTIL implements Runnable{
 	}
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		if(play==1) {
 			try {
 				play_time();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -161,7 +159,6 @@ public class GameUTIL implements Runnable{
 			try {
 				play_music();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

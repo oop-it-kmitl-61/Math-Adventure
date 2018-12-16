@@ -54,7 +54,6 @@ public class MainGame{
 		try {
 			util.add_quiz();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		new HomePage();
@@ -77,7 +76,6 @@ public class MainGame{
 				try {
 					gui.change_to_first_cutscene();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				gui.change_to_cutscene();
@@ -251,7 +249,6 @@ public class MainGame{
 		try {
 			util.readscore();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		util.leaderboard += "<html>Your Score : "+util.play_time_min+":"+util.play_time_sec+":"+util.play_time_millisec+"<br>";
@@ -266,7 +263,6 @@ public class MainGame{
 		try {
 			util.writescore();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

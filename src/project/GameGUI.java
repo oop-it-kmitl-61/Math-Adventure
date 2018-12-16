@@ -55,7 +55,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 	static List<ImageIcon> images_cutscene = new ArrayList<ImageIcon>();
 	static List<ImageIcon> images_history = new ArrayList<ImageIcon>();
 	static List<ImageIcon> images_icon_boss = new ArrayList<ImageIcon>();
-//	static List<Image> images_background = new ArrayList<Image>();
 	static List<Image> images_boss = new ArrayList<Image>();
 	static List<Image> images_crystal_boss = new ArrayList<Image>();
 	String last_scene;
@@ -70,7 +69,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 		try {
 			bim = (BufferedImage) ImageIO.read(new File("images\\knight\\dumb-knight-2.gif"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		};
 		bim2 = (BufferedImage) images_boss.get(a);
@@ -357,7 +355,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 		try {
 			bim2 = (BufferedImage) ImageIO.read(new File("images\\banner\\gameover.png"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		};
 		BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -513,7 +510,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 				try {
 					fin = new FileInputStream("sound\\hitsoco.mp3");
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				Player p;
@@ -521,7 +517,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 						p = new Player(fin);
 						p.play();
 					} catch (JavaLayerException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				hpbar_monster.setValue(gu.hp_monster);
@@ -540,7 +535,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 			else {
 				gu.hp_player -= 10;
 				hpbar_player.setValue(gu.hp_player);
-//				txt.setText("");
 			}
 		}
 		else if(arg0.getSource()==b_change) {
@@ -572,7 +566,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 					try {
 						fin = new FileInputStream("sound\\hitsoco.mp3");
 					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					Player p;
@@ -580,7 +573,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 							p = new Player(fin);
 							p.play();
 						} catch (JavaLayerException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					hpbar_monster.setValue(gu.hp_monster);
@@ -608,18 +600,12 @@ public class GameGUI implements ActionListener,KeyListener  {
 		    {
 		        i=1;
 		    }
-	
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 }
 }
