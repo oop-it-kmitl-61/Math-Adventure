@@ -13,10 +13,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.*;
@@ -55,7 +58,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 //	static List<Image> images_background = new ArrayList<Image>();
 	static List<Image> images_boss = new ArrayList<Image>();
 	static List<Image> images_crystal_boss = new ArrayList<Image>();
-	
+	String last_scene;
 	BufferedImage bim,bim2,bin,bin2,filter,filter2;
 	Graphics2D createGraphics,createGraphics2;
 	RescaleOp r;
@@ -177,13 +180,18 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 		}
 	}
-	public void change_to_first_cutscene() {
+	public void change_to_first_cutscene() throws Exception {
 		i=0;
+		JLabel textbox = null;
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("script.txt"), "UTF8"));
 		for(int i=0;i<=13;i++) {
 		change = 0;
 		JLabel lb = new JLabel(new ImageIcon(images_cutscene.get(i)+""));
 		lb.setLayout(new BorderLayout());
-		JLabel textbox = new JLabel(new ImageIcon("test.png"));
+	    String line = br.readLine();
+	    textbox = new JLabel(line);	
+		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 28);
+	    textbox.setFont(myFont);
 		lb.add(textbox,BorderLayout.SOUTH);
 		fr.getContentPane().removeAll();
 		fr.repaint();
@@ -203,6 +211,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 			}
 		}
 		}
+		last_scene = br.readLine();
+		System.out.println(last_scene);
+		br.close();
 	}
 	public void change_to_fight(String back) {
 		fr.getContentPane().removeAll();
@@ -268,8 +279,12 @@ public class GameGUI implements ActionListener,KeyListener  {
 		change = 0;
 		JLabel lb = new JLabel(new ImageIcon(images_cutscene.get(i)+""));
 		lb.setLayout(new BorderLayout());
-		JLabel textbox = new JLabel(new ImageIcon("test.png"));
+		if(i==14) {
+		JLabel textbox = new JLabel(last_scene);	
+		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 28);
+	    textbox.setFont(myFont);
 		lb.add(textbox,BorderLayout.SOUTH);
+		}
 		fr.getContentPane().removeAll();
 		fr.repaint();
 		fr.add(lb);
@@ -494,21 +509,21 @@ public class GameGUI implements ActionListener,KeyListener  {
 			}
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 				gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
-//				FileInputStream fin = null;
-//				try {
-//					fin = new FileInputStream("test.mp3");
-//				} catch (FileNotFoundException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				Player p;
-//					try {
-//						p = new Player(fin);
-//						p.play();
-//					} catch (JavaLayerException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+				FileInputStream fin = null;
+				try {
+					fin = new FileInputStream("sound\\hitsoco.mp3");
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Player p;
+					try {
+						p = new Player(fin);
+						p.play();
+					} catch (JavaLayerException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				hpbar_monster.setValue(gu.hp_monster);
 				gu.seed = System.nanoTime( );
 				gu.rand = new Random( gu.seed );
@@ -553,21 +568,21 @@ public class GameGUI implements ActionListener,KeyListener  {
 //				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
 		    	if(num==1) {
 					gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
-//					FileInputStream fin = null;
-//					try {
-//						fin = new FileInputStream("test.mp3");
-//					} catch (FileNotFoundException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					Player p;
-//						try {
-//							p = new Player(fin);
-//							p.play();
-//						} catch (JavaLayerException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
+					FileInputStream fin = null;
+					try {
+						fin = new FileInputStream("sound\\hitsoco.mp3");
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Player p;
+						try {
+							p = new Player(fin);
+							p.play();
+						} catch (JavaLayerException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					hpbar_monster.setValue(gu.hp_monster);
 					gu.seed = System.nanoTime( );
 					gu.rand = new Random( gu.seed );

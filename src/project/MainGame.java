@@ -74,7 +74,12 @@ public class MainGame{
 					e.printStackTrace();
 				}
 				t_cutscene.start();
-				gui.change_to_first_cutscene();
+				try {
+					gui.change_to_first_cutscene();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				gui.change_to_cutscene();
 				t_cutscene.stop();
 				util.sound=1;

@@ -56,10 +56,10 @@ public class GameUTIL implements Runnable{
 			bonus_dmg=0;
 		}
 		hp_player = hp_player-dmg_monster;
-//		FileInputStream fin = new FileInputStream("test.mp3");
-//		Player p;
-//			p = new Player(fin);
-//			p.play();
+		FileInputStream fin = new FileInputStream("sound\\hit1.mp3");
+		Player p;
+			p = new Player(fin);
+			p.play();
 		GameGUI.hpbar_player.setValue(hp_player);
 		time_dmg=0;
 		}
@@ -68,19 +68,25 @@ public class GameUTIL implements Runnable{
 	public static void play_music() throws Exception {
 		while(true) {
 		if(d==0) {//sound first cut scene
-			FileInputStream fin = new FileInputStream("sound\\test.mp3");
+			FileInputStream fin = new FileInputStream("sound\\titlescene.mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();
 		}
-		else if(GameGUI.a==6) {
-			FileInputStream fin = new FileInputStream("sound\\test2.mp3");
+		else if(GameGUI.a==6) {//end scene
+			FileInputStream fin = new FileInputStream("sound\\endscene.mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();
 		}
 		else if(sound==0) {//sound cut scene
-			FileInputStream fin = new FileInputStream("sound\\test2.mp3");
+			FileInputStream fin = new FileInputStream("sound\\cutscene.mp3");
+			Player p;
+				p = new Player(fin);
+				p.play();
+		}
+		else if(hp_player>75&&GameGUI.a==5) {//sound start boss fight
+			FileInputStream fin = new FileInputStream("sound\\boss_sound(yugi).mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();
