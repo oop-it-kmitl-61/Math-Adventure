@@ -308,6 +308,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		fr.revalidate();
 		fr.pack();
 		fr.repaint();
+		fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JLabel time = new JLabel(new ImageIcon("images\\old_paper1.jpg"));
 		time.setLayout(new BorderLayout());
 		JLabel textbox = new JLabel(gu.leaderboard,SwingConstants.CENTER);	
@@ -479,26 +480,26 @@ public class GameGUI implements ActionListener,KeyListener  {
 		images_boss.add(img_boss);
 		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_3.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_4.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_5.gif"));
 		images_boss.add(img_boss);
-		img_boss = ImageIO.read(new File("images\\knight\\boss_2.gif"));
+		img_boss = ImageIO.read(new File("images\\knight\\boss_6.gif"));
 		images_boss.add(img_boss);
 		
 		img = new ImageIcon("images\\knight\\boss_1.gif");//add boss for icon
 		images_icon_boss.add(img);
 		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_3.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_4.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_5.gif");//add boss for icon
 		images_icon_boss.add(img);
-		img = new ImageIcon("images\\knight\\boss_2.gif");//add boss for icon
+		img = new ImageIcon("images\\knight\\boss_6.gif");//add boss for icon
 		images_icon_boss.add(img);
 	}
 	@Override
