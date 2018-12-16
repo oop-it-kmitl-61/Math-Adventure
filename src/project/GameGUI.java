@@ -231,7 +231,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         p_cham = new TransparentPanel();
         p_cham.setLayout(new BorderLayout());
         p_cham.setBackground(new Color(0,0,0,0));
-        JLabel keeptxt = new JLabel(new ImageIcon("images\\old_paper.jpg"));
+        JLabel keeptxt = new JLabel(new ImageIcon("images\\old_paper3.jpg"));
         lb_player = new JLabel();
         lb_player_character = new JLabel();
         lb_monster_character = new JLabel();
