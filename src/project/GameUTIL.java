@@ -52,7 +52,7 @@ public class GameUTIL implements Runnable{
 	}
 	public void got_damage() throws Exception {
 		if(GameGUI.num==Double.parseDouble(num_24[GameGUI.index_button][1])) {
-	    		hp_monster = hp_monster-(dmg_player);
+	    		hp_monster = hp_monster-(300);
 			
 				GameGUI.lb_player_character.setIcon(GameGUI.img);
 				FileInputStream fin;

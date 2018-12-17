@@ -161,6 +161,22 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 		}
 	}
+	public void change_to_how() throws Exception {
+		JLabel lb = new JLabel(new ImageIcon("images\\howtoplay.jpg"));
+		fr.getContentPane().removeAll();
+		fr.repaint();
+		fr.getContentPane().add(lb);
+		fr.validate();
+		fr.repaint();
+		fr.addKeyListener(this);
+		while(change < 20) {
+			if(this.i==1) {
+				break;
+			}
+			TimeUnit.SECONDS.sleep(1);
+			change++;
+		}
+	}
 	public void change_to_first_cutscene() throws Exception {
 		i=0;
 		JLabel textbox = null;
@@ -196,6 +212,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 		}
 		br.close();
+		System.out.println(last_scene);
 	}
 	public void change_to_fight(String back) throws Exception {
 		fr.getContentPane().removeAll();
@@ -356,7 +373,7 @@ public class GameGUI implements ActionListener,KeyListener  {
         icon_monster = new ImageIcon("images\\knight\\badge_111.png");
         
         icon_player_character = new ImageIcon("images\\knight\\dumb-knight-2.gif");
-
+        
 		img = new ImageIcon("images\\cutscene\\Paper.Project.1.jpg");//add cutsecene
 		images_cutscene.add(img);
 		img = new ImageIcon("images\\cutscene\\Paper.Project.2.jpg");//add cutsecene

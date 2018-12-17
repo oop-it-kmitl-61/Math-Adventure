@@ -64,6 +64,7 @@ public class MainGame{
 				gui.index_button = util.rand.nextInt(23)+(gui.a*40);
 				gui.add_img();
 				t_cutscene.start();
+				gui.change_to_how();
 				gui.change_to_first_cutscene();
 				gui.change_to_cutscene();
 				t_cutscene.stop();
@@ -203,6 +204,12 @@ public class MainGame{
 				}
 			}
 			else if(util.hp_player<=0) {
+				t1.stop();
+				t2.stop();
+				t3.stop();
+				t4.stop();
+				t5.stop();
+				t6.stop();
 				t11.stop();
 				t22.stop();
 				t33.stop();
