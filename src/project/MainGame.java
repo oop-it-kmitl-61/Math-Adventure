@@ -15,8 +15,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class MainGame{
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		int locks = 0,state = 0;
+//		Attack att = new Attack();
+//		Thread t_att = new Thread(att);
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
 		util.play_time_min=0;
@@ -44,7 +46,6 @@ public class MainGame{
 		Thread t_die = new Thread(util);
 		Thread t_time = new Thread(util);
 		Thread t_end = new Thread(util);
-		util.bonus_dmg=5;
 		String[] backgroundlist = {"images\\bg_1_169.jpg", 
 				"images\\bg_2_169.jpg", 
 				"images\\bg_3_169.jpg", 
@@ -84,10 +85,15 @@ public class MainGame{
 				locks = 1;
 				t1.start();
 				gui.change_to_fight(backgroundlist[state]);
+//				t_att.start();
 				util.play=1;
 				t_time.start();
 			}
 			while(util.hp_monster>0&&util.hp_player>0) {
+				if(gui.num==1) {
+					gui.num = Double.parseDouble(gui.tf.getText());
+					util.got_damage();
+				}
 				try {
 					util.damage();
 				} catch (Exception e) {
@@ -148,7 +154,6 @@ public class MainGame{
 				util.sound=1;
 				t2.start();
 				gui.change_to_fight(backgroundlist[state]);
-				util.bonus_dmg=5;
 				break;
 				
 				case 2:gui.b+=2;
@@ -165,7 +170,6 @@ public class MainGame{
 				util.sound=1;
 				t3.start();
 				gui.change_to_fight(backgroundlist[state]);
-				util.bonus_dmg=5;
 				break;
 				
 				case 3:gui.b+=5;
@@ -182,7 +186,6 @@ public class MainGame{
 				util.sound=1;
 				t4.start();
 				gui.change_to_fight(backgroundlist[state]);
-				util.bonus_dmg=5;
 				break;
 				
 				case 4:gui.b+=5;
@@ -199,7 +202,6 @@ public class MainGame{
 				util.sound=1;
 				t5.start();
 				gui.change_to_fight(backgroundlist[state]);
-				util.bonus_dmg=5;
 				break;
 				
 				case 5:gui.b+=2;
@@ -216,7 +218,6 @@ public class MainGame{
 				util.sound=1;
 				t6.start();
 				gui.change_to_fight(backgroundlist[state]);
-				util.bonus_dmg=5;
 				break;
 				}
 			}

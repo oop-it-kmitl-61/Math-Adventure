@@ -35,11 +35,11 @@ import javazoom.jl.player.Player;
 
 public class GameGUI implements ActionListener,KeyListener  {
 	GameUTIL gu = new GameUTIL();
-	double num;
+	static double num;
 //	float alp_img;
 	static int a = 0;
 	int b=2,i=0;
-	int index_button=0;
+	static int index_button=0;
 	int change;
 	int c=0;
 	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
@@ -50,7 +50,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 	static JProgressBar hpbar_player,hpbar_monster;
 	static JButton b1,b2,b3,b4,b_hit,b_plus,b_minus,b_multi,b_divide,b_eq,b_clear,b_change;
 	static JTextField tf;
-	ImageIcon img =null;
+	static ImageIcon img =null;
 	Image img_background,img_player,img_boss;
 	static List<ImageIcon> images_cutscene = new ArrayList<ImageIcon>();
 	static List<ImageIcon> images_history = new ArrayList<ImageIcon>();
@@ -501,6 +501,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 		images_icon_boss.add(img);
 		img = new ImageIcon("images\\knight\\boss_6.gif");//add boss for icon
 		images_icon_boss.add(img);
+		
+		img = new ImageIcon("images\\knight\\dumb-knight-action.gif");
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -512,7 +514,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 				System.out.println("please enter number");
 			}
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
-				gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
+				gu.hp_monster = gu.hp_monster-(gu.dmg_player);
 				FileInputStream fin = null;
 				try {
 					fin = new FileInputStream("sound\\hitsoco.mp3");
@@ -534,7 +536,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 				tf.requestFocus();
 				if(gu.hp_monster > 0) {
 					txt.setText(GameUTIL.num_24[index_button][0]);
-					gu.bonus_dmg=5;
 				} else {
 					txt.setText("");
 				}
@@ -551,7 +552,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 			gu.hp_player -= 20;
 			hpbar_player.setValue(gu.hp_player);
 			txt.setText(GameUTIL.num_24[index_button][0]);
-			gu.bonus_dmg=5;
 			tf.requestFocus();
 		}
 		
@@ -561,43 +561,10 @@ public class GameGUI implements ActionListener,KeyListener  {
 	public void keyPressed(KeyEvent arg0) {
 		 if (arg0.getKeyCode()==KeyEvent.VK_ENTER){
 			 try {
-				num = Double.parseDouble(tf.getText());
+				num = 1;
 				}
 				catch(NumberFormatException e){	
 					System.out.println("please enter number");
-				}
-//				if(num==Double.parseDouble(gu.num_24[index_button][1])) {
-		    	if(num==1) {
-					gu.hp_monster = gu.hp_monster-(gu.dmg_player+gu.bonus_dmg*2);
-//					FileInputStream fin = null;
-//					try {
-//						fin = new FileInputStream("sound\\hitsoco.mp3");
-//					} catch (FileNotFoundException e) {
-//						e.printStackTrace();
-//					}
-//					Player p;
-//						try {
-//							p = new Player(fin);
-//							p.play();
-//						} catch (JavaLayerException e) {
-//							e.printStackTrace();
-//						}
-					hpbar_monster.setValue(gu.hp_monster);
-					gu.seed = System.nanoTime( );
-					gu.rand = new Random( gu.seed );
-					index_button = gu.rand.nextInt(23)+(a*40);
-					tf.setText("");
-					tf.requestFocus();
-					if(gu.hp_monster > 0) {
-						txt.setText(GameUTIL.num_24[index_button][0]);
-						gu.bonus_dmg=5;
-					} else {
-						txt.setText("");
-					}
-				}
-				else {
-					gu.hp_player -= 10;
-					hpbar_player.setValue(gu.hp_player);
 				}
 		    }
 		 else if(arg0.getKeyCode()==KeyEvent.VK_SPACE) {
