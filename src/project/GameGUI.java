@@ -209,7 +209,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 		}
 		}
 		br.close();
-		System.out.println(last_scene);
 	}
 	public void change_to_fight(String back) throws Exception {
 		fr.getContentPane().removeAll();
