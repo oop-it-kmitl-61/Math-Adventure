@@ -246,13 +246,10 @@ public class MainGame{
 		util.leaderboard+="</html>";
 		gui.change_to_end();
 		util.writescore();
-		int q=0;
-		while(gui.i!=1) {
+		gui.change=0;
+		while(gui.change<20) {
 			TimeUnit.MILLISECONDS.sleep(1000);
-			q++;
-			if(q==20) {
-				break;
-			}
+			gui.change++;
 		}
 		t_end.stop();
 		gui.fr.dispose();

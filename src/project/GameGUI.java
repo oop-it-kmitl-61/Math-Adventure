@@ -207,9 +207,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 			TimeUnit.SECONDS.sleep(1);
 			change++;
 		}
-		if(this.i==1) {
-			break;
-		}
 		}
 		br.close();
 		System.out.println(last_scene);
