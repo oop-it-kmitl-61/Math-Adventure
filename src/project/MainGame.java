@@ -75,7 +75,7 @@ public class MainGame{
 				t_time.start();
 			}
 			while(util.hp_monster>0&&util.hp_player>0) {
-				if(gui.num==1) {
+				if(gui.num==1 && gui.Checknum(gui.tf.getText())) {
 					gui.num = Double.parseDouble(gui.tf.getText());
 					util.got_damage();
 				}
@@ -239,6 +239,7 @@ public class MainGame{
 		util.leaderboard+="</html>";
 		gui.change_to_end();
 		util.writescore();
+
 	}
 
 }

@@ -467,9 +467,23 @@ public class GameGUI implements ActionListener,KeyListener  {
 		
 		img = new ImageIcon("images\\knight\\dumb-knight-action.gif");
 	}
+	 public boolean Checknum(String input) 
+	    {     
+	        try 
+	        { 
+	            // checking valid integer using parseInt() method 
+	            Double.parseDouble(input); 
+	            return true;
+	        }  
+	        catch (NumberFormatException e)  
+	        { 
+	            return false;
+	        } 
+	          
+	    } 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(arg0.getSource()==b_hit) {
+		if(arg0.getSource()==b_hit && Checknum(tf.getText())) {
 			try {
 			num = Double.parseDouble(tf.getText());
 			}
@@ -477,7 +491,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 				System.out.println("please enter number");
 			}
 			if(num==Double.parseDouble(gu.num_24[index_button][1])) {
-				gu.hp_monster = gu.hp_monster-(gu.dmg_player);
+				gu.hp_monster = gu.hp_monster -(gu.dmg_player);
 				FileInputStream fin = null;
 				try {
 					fin = new FileInputStream("sound\\hitsoco.mp3");

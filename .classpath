@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="Adventure-Game-OOP-Project"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/poom/eclipse-workspace/project/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="jl1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
