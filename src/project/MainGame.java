@@ -239,7 +239,17 @@ public class MainGame{
 		util.leaderboard+="</html>";
 		gui.change_to_end();
 		util.writescore();
-
+		int q=0;
+		while(gui.i!=1) {
+			TimeUnit.MILLISECONDS.sleep(1000);
+			q++;
+			if(q==20) {
+				break;
+			}
+		}
+		t_end.stop();
+		gui.fr.dispose();
+		main(args);
 	}
 
 }

@@ -52,7 +52,7 @@ public class GameUTIL implements Runnable{
 	}
 	public void got_damage() throws Exception {
 		if(GameGUI.num==Double.parseDouble(num_24[GameGUI.index_button][1])) {
-	    		hp_monster = hp_monster-(300);
+	    		hp_monster = hp_monster-(dmg_player);
 			
 				GameGUI.lb_player_character.setIcon(GameGUI.img);
 				FileInputStream fin;
@@ -143,7 +143,7 @@ public class GameUTIL implements Runnable{
 				p.play();
 		}
 		else if(hp_player>75&&GameGUI.a==5) {//sound start boss fight
-			FileInputStream fin = new FileInputStream("sound\\boss_sound(yugi).mp3");
+			FileInputStream fin = new FileInputStream("sound\\Pokemon_sound_boss.mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();
@@ -155,7 +155,7 @@ public class GameUTIL implements Runnable{
 				p.play();
 		}
 		else if(hp_player<75&&hp_player>0) {//sound when almost die
-			FileInputStream fin = new FileInputStream("sound\\test2.mp3");
+			FileInputStream fin = new FileInputStream("sound\\boss_sound(yugi).mp3");
 			Player p;
 				p = new Player(fin);
 				p.play();

@@ -165,7 +165,11 @@ public class GameGUI implements ActionListener,KeyListener  {
 		i=0;
 		JLabel textbox = null;
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("script.txt"), "UTF8"));
-		for(int i=0;i<=13;i++) {
+		for(int i=0;i<=14;i++) {
+		if(i==14) {
+			last_scene = br.readLine();
+			break;
+		}
 		change = 0;
 		JLabel lb = new JLabel(new ImageIcon(images_cutscene.get(i)+""));
 		lb.setLayout(new BorderLayout());
@@ -191,7 +195,6 @@ public class GameGUI implements ActionListener,KeyListener  {
 			break;
 		}
 		}
-		last_scene = br.readLine();
 		br.close();
 	}
 	public void change_to_fight(String back) throws Exception {
@@ -287,6 +290,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 	    textbox.setFont(myFont);
 		time.add(textbox,BorderLayout.CENTER);
 		fr.getContentPane().add(time);
+		this.i=0;
 	}
 	public void monster_dead() {
 		tf.setEditable(false);
@@ -523,6 +527,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 			}
 		}
 		else if(arg0.getSource()==b_change) {
+			if(gu.hp_player>0) {
 			gu.seed = System.nanoTime( );
 			gu.rand = new Random( gu.seed );
 			index_button = gu.rand.nextInt(23)+(a*40);
@@ -530,6 +535,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 			hpbar_player.setValue(gu.hp_player);
 			txt.setText(GameUTIL.num_24[index_button][0]);
 			tf.requestFocus();
+		}
 		}
 		
 		
