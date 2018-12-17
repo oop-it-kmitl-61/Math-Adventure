@@ -36,12 +36,8 @@ import javazoom.jl.player.Player;
 public class GameGUI implements ActionListener,KeyListener  {
 	GameUTIL gu = new GameUTIL();
 	static double num;
-//	float alp_img;
-	static int a = 0;
-	int b=2,i=0;
-	static int index_button=0;
-	int change;
-	int c=0;
+	static int a = 0,index_button=0;
+	int b=2,i=0,change,c=0;
 	static ImageIcon icon_player,icon_monster, icon_monster_character, icon_player_character;
 	static JLabel lb_player,lb_monster, lb_player_character, lb_monster_character,txt, keeptxt;
 	static JFrame fr;
@@ -62,15 +58,10 @@ public class GameGUI implements ActionListener,KeyListener  {
 	Graphics2D createGraphics,createGraphics2;
 	RescaleOp r;
 	
-	public void change() {
+	public void change() throws Exception {
 		tf.setEditable(false);
-		for(float alp_img=0;alp_img<=1;alp_img+=0.1) 
-		{
-		try {
-			bim = (BufferedImage) ImageIO.read(new File("images\\knight\\dumb-knight-2.gif"));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		};
+		for(float alp_img=0;alp_img<=1;alp_img+=0.1) {
+		bim = (BufferedImage) ImageIO.read(new File("images\\knight\\dumb-knight-2.gif"));
 		bim2 = (BufferedImage) images_boss.get(a);
 		bin = new BufferedImage(bim.getWidth(), bim.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -85,11 +76,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		filter2 = r.filter(bin2, null);
 		lb_player_character.setIcon(new ImageIcon(filter));
 		lb_monster_character.setIcon(new ImageIcon(filter2));
-		try {
-			TimeUnit.MILLISECONDS.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		TimeUnit.MILLISECONDS.sleep(200);
 		}
 		lb_player_character.setIcon(icon_player_character);
 		lb_monster_character.setIcon(images_icon_boss.get(a));
@@ -148,12 +135,12 @@ public class GameGUI implements ActionListener,KeyListener  {
 		b_change.addActionListener(this);
 		p_player.add(b_change);
 	}
-	public void change_monster() {
+	public void change_monster() throws Exception {
 		GameUTIL.hp_monster = 300;
 		hpbar_monster.setValue(GameUTIL.hp_monster);
 		change();
 	}
-	public void change_to_cutscene() {
+	public void change_to_cutscene() throws Exception {
 		i=0;
 		for(;c<b;c++) {
 		change = 0;
@@ -169,12 +156,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 			if(i==1) {
 				break;
 			}
-			try {
-				TimeUnit.SECONDS.sleep(1);
-				change++;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			TimeUnit.SECONDS.sleep(1);
+			change++;
 		}
 		}
 	}
@@ -201,12 +184,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 			if(this.i==1) {
 				break;
 			}
-			try {
-				TimeUnit.SECONDS.sleep(1);
-				change++;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			TimeUnit.SECONDS.sleep(1);
+			change++;
 		}
 		if(this.i==1) {
 			break;
@@ -215,7 +194,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 		last_scene = br.readLine();
 		br.close();
 	}
-	public void change_to_fight(String back) {
+	public void change_to_fight(String back) throws Exception {
 		fr.getContentPane().removeAll();
 		fr.revalidate();
 		fr.pack();
@@ -267,13 +246,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 		p_player.validate();
 		p_monster.validate();
 		tf.requestFocus();
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		TimeUnit.SECONDS.sleep(2);
 	}
-	public void change_to_end() {
+	public void change_to_end() throws Exception {
 		i=0;
 		for(int i=14;i<=15;i++) {
 		change = 0;
@@ -296,12 +271,8 @@ public class GameGUI implements ActionListener,KeyListener  {
 			if(this.i==1) {
 				break;
 			}
-			try {
-				TimeUnit.SECONDS.sleep(1);
-				change++;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			TimeUnit.SECONDS.sleep(1);
+			change++;
 		}
 		}
 		fr.getContentPane().removeAll();
@@ -354,7 +325,7 @@ public class GameGUI implements ActionListener,KeyListener  {
 			e.printStackTrace();
 		}
 	}
-	public void player_dead() {
+	public void player_dead() throws Exception {
 		txt.setText(null);
 		for(float alp_img=0;alp_img<=1;alp_img+=0.25) 
 		{
@@ -372,17 +343,9 @@ public class GameGUI implements ActionListener,KeyListener  {
 		RescaleOp r = new RescaleOp(alp,def,null);
 		BufferedImage filter2 = r.filter(bin2, null);
 		txt.setIcon(new ImageIcon(filter2));
-		try {
-			TimeUnit.MILLISECONDS.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		TimeUnit.MILLISECONDS.sleep(500);
 		}
-		}
-		try {
-			TimeUnit.MILLISECONDS.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		TimeUnit.MILLISECONDS.sleep(1000);
 	}
 	public void add_img() throws IOException {
 		icon_player = new ImageIcon("images\\knight\\badge_222.png");

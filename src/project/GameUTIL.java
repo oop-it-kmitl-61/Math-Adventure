@@ -55,23 +55,23 @@ public class GameUTIL implements Runnable{
 	    		hp_monster = hp_monster-(dmg_player);
 			
 				GameGUI.lb_player_character.setIcon(GameGUI.img);
-						FileInputStream fin;
-							fin = new FileInputStream("sound\\hitsoco.mp3");
-							Player p;
-							p = new Player(fin);
-							TimeUnit.MILLISECONDS.sleep(100);
-							p.play();
-							TimeUnit.MILLISECONDS.sleep(100);
-							BufferedImage bim2 = (BufferedImage) GameGUI.images_boss.get(GameGUI.a);
-							BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
-							Graphics2D createGraphics2= bin2.createGraphics();
-							createGraphics2.drawImage(bim2, null, 0, 0);
-							float alp[] = new float[] {250f,0,0,0.5f};
-							float def[] = new float[] {0,0,0,0};
-							RescaleOp r = new RescaleOp(alp,def,null);
-							BufferedImage filter2 = r.filter(bin2, null);
-							GameGUI.lb_monster_character.setIcon(new ImageIcon(filter2));
-						
+				FileInputStream fin;
+				fin = new FileInputStream("sound\\hitsoco.mp3");
+				Player p;
+				p = new Player(fin);
+				TimeUnit.MILLISECONDS.sleep(100);
+				p.play();
+				TimeUnit.MILLISECONDS.sleep(100);
+				BufferedImage bim2 = (BufferedImage) GameGUI.images_boss.get(GameGUI.a);
+				BufferedImage bin2 = new BufferedImage(bim2.getWidth(), bim2.getHeight(), BufferedImage.TYPE_INT_ARGB);
+				Graphics2D createGraphics2= bin2.createGraphics();
+				createGraphics2.drawImage(bim2, null, 0, 0);
+				float alp[] = new float[] {250f,0,0,0.5f};
+				float def[] = new float[] {0,0,0,0};
+				RescaleOp r = new RescaleOp(alp,def,null);
+				BufferedImage filter2 = r.filter(bin2, null);
+				GameGUI.lb_monster_character.setIcon(new ImageIcon(filter2));
+					
 				GameGUI.hpbar_monster.setValue(hp_monster);
 				seed = System.nanoTime( );
 				rand = new Random( seed );
@@ -142,12 +142,6 @@ public class GameUTIL implements Runnable{
 				p = new Player(fin);
 				p.play();
 		}
-//		else if(num==1) {
-//			FileInputStream fin = new FileInputStream("sound\\hitsoco.mp3");
-//			Player p;
-//				p = new Player(fin);
-//				p.play();
-//		}
 		else if(hp_player>75&&GameGUI.a==5) {//sound start boss fight
 			FileInputStream fin = new FileInputStream("sound\\boss_sound(yugi).mp3");
 			Player p;

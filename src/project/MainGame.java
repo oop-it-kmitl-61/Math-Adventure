@@ -17,8 +17,6 @@ import javax.swing.*;
 public class MainGame{
 	public static void main(String[] args) throws Exception {
 		int locks = 0,state = 0;
-//		Attack att = new Attack();
-//		Thread t_att = new Thread(att);
 		GameGUI gui = new GameGUI();
 		GameUTIL util = new GameUTIL();
 		util.play_time_min=0;
@@ -52,11 +50,7 @@ public class MainGame{
 				"images\\bg_4_169.jpg",
 				"images\\bg_5_169.jpg", 
 				"images\\Bg_castle_1.png"};
-		try {
-			util.add_quiz();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+		util.add_quiz();
 		new HomePage();
         t.start();
 		while(util.d==0) {
@@ -68,24 +62,15 @@ public class MainGame{
 				util.seed = System.nanoTime( );
 				util.rand = new Random( util.seed );
 				gui.index_button = util.rand.nextInt(23)+(gui.a*40);
-				try {
-					gui.add_img();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				gui.add_img();
 				t_cutscene.start();
-				try {
-					gui.change_to_first_cutscene();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				gui.change_to_first_cutscene();
 				gui.change_to_cutscene();
 				t_cutscene.stop();
 				util.sound=1;
 				locks = 1;
 				t1.start();
 				gui.change_to_fight(backgroundlist[state]);
-//				t_att.start();
 				util.play=1;
 				t_time.start();
 			}
@@ -94,11 +79,7 @@ public class MainGame{
 					gui.num = Double.parseDouble(gui.tf.getText());
 					util.got_damage();
 				}
-				try {
-					util.damage();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				util.damage();
 				util.play=0;
 				if(gui.a==0&&util.hp_player<=75&&util.time==0) {
 					t1.stop();
@@ -247,11 +228,7 @@ public class MainGame{
 		t66.stop();
 		t_time.stop();
 		t_end.start();
-		try {
-			util.readscore();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		util.readscore();
 		util.leaderboard += "<html>Your Score : "+util.play_time_min+":"+util.play_time_sec+":"+util.play_time_millisec+"<br>";
 		for(int i=0;i<util.score.size();i++) {
 			util.leaderboard += i+1+". : "+util.score.get(i)+"<br>";
@@ -261,11 +238,7 @@ public class MainGame{
 		}
 		util.leaderboard+="</html>";
 		gui.change_to_end();
-		try {
-			util.writescore();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		util.writescore();
 	}
 
 }
