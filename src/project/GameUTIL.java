@@ -31,8 +31,8 @@ public class GameUTIL implements Runnable{
 	Double sub;
 	static String num_24[][]=new String[240][2]; 	
 	static int hp_player=300,hp_monster=300;
-	static int dmg_player=30;
-	int dmg_monster=rand.nextInt(10)+10;
+	static int dmg_player=60;
+	int dmg_monster=10;
 	List<String> score = new ArrayList<String>();
 	static String leaderboard = "";
 	public void add_quiz() throws IOException {
