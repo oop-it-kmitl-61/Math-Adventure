@@ -253,6 +253,12 @@ public class MainGame{
 		}
 		t_end.stop();
 		gui.fr.dispose();
+		util.hp_player=300;
+		gui.a=0;
+		util.sound=0;
+		util.time=0;
+		util.d=0;
+		util.hp_monster=300;
 		main(args);
 	}
 
